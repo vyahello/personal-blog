@@ -2,18 +2,18 @@
 Typically a simple blog written in flask - python micro-web framework. Enjoy it!
 
 ## Run a blog
-- `blog.py` tool allows to launch a blog. 
+Execute next command in your shell
 ```bash
 ~ python blog.py
 ```
 
 ## Structure
 ### Home Page
-![Screenshot](images/home.png)
+![Screenshot](server/images/home.png)
 ### Login Page
-![Screenshot](images/login.png)
+![Screenshot](server/images/login.png)
 ### Register Page
-![Screenshot](images/register.png)
+![Screenshot](server/images/register.png)
 
 ## Contributing
 
