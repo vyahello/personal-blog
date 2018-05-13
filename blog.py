@@ -1,10 +1,10 @@
-from server.flashes import BlogFlash
-from server.forms import RegistrationForm, LoginForm
-from server.posts import BlogPost
-from server.redirects import BlogRedirect
+from server.view.flashes import BlogFlash
+from server.view.forms import RegistrationForm, LoginForm
+from server.view.posts import BlogPost
+from server.view.redirects import BlogRedirect
+from server.view.templates import BlogTemplatePosts, BlogTemplate
+from server.view.urls import BlogUrlFor
 from server.servers import Server, WebServer
-from server.templates import BlogTemplatePosts, BlogTemplate
-from server.urls import BlogUrlFor
 
 _blog: Server = WebServer()
 _blog.config()

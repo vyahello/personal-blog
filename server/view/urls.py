@@ -6,7 +6,7 @@ class UrlFor(ABC):
     """Represent abstraction of url redirection."""
 
     @abstractmethod
-    def trace(self) -> str:
+    def __call__(self) -> str:
         pass
 
 
@@ -16,5 +16,5 @@ class BlogUrlFor(UrlFor):
     def __init__(self, endpoint: str) -> None:
         self._endpoint = endpoint
 
-    def trace(self) -> str:
+    def __call__(self) -> str:
         return url_for(self._endpoint)

@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from flask import redirect
-from server.urls import UrlFor
+from server.view.urls import UrlFor
 
 
 class Redirect(ABC):
@@ -18,4 +18,4 @@ class BlogRedirect(Redirect):
         self._endpoint = endpoint
 
     def link(self) -> str:
-        return redirect(self._endpoint.trace())
+        return redirect(self._endpoint())

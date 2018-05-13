@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Any
 from flask import render_template
-from server.posts import Post
+from server.view.posts import Post
 
 
 class Template(ABC):
@@ -29,4 +29,4 @@ class BlogTemplatePosts(Template):
         self._template = BlogTemplate(template)
 
     def render(self, posts: Post) -> str:
-        return self._template.render(posts=posts.data())
+        return self._template.render(posts=posts())
