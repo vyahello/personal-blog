@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Iterable, Dict
+from typing import Dict, List
 from datetime import datetime
 
 
@@ -7,7 +7,7 @@ class Post(ABC):
     """Represent abstraction for a post object."""
 
     @abstractmethod
-    def data(self) -> Iterable[Dict[str, str]]:
+    def data(self) -> List[Dict[str, str]]:
         pass
 
 
@@ -35,13 +35,12 @@ class BlogPost(Post):
     def __init__(self) -> None:
         self._date = _PostDate()
 
-    def data(self) -> Iterable[Dict[str, str]]:
+    def data(self) -> List[Dict[str, str]]:
         return [
             {
                 'author': 'Volodymyr Yahello',
-                'title': 'Blog Post 1',
-                'content': 'First post content',
+                'title': 'Blog Post #1',
+                'content': 'Test content',
                 'date_posted': f"{self._date.value()}"
             }
         ]
-

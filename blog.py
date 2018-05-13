@@ -1,7 +1,10 @@
-from flask import render_template, flash, url_for, redirect
+from server.flashes import BlogFlash
 from server.forms import RegistrationForm, LoginForm
 from server.posts import BlogPost
+from server.redirects import BlogRedirect
 from server.servers import Server, WebServer
+from server.templates import BlogTemplatePosts, BlogTemplate
+from server.urls import BlogUrlFor
 
 _blog: Server = WebServer()
 _blog.config()
@@ -10,21 +13,21 @@ _blog.config()
 @_blog.route('/')
 @_blog.route('/home')
 def home():
-    return render_template('home.html', posts=BlogPost().data())
+    return BlogTemplatePosts('home.html').render(BlogPost())
 
 
 @_blog.route('/about')
 def about():
-    return render_template('about.html', title='About')
+    return BlogTemplate('about.html').render(title='About')
 
 
 @_blog.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        flash(f'Account created for {form.username.data}!', 'success')
-        return redirect(url_for('home'))
-    return render_template('register.html', title='Register', form=form)
+        BlogFlash(f'Account created for {form.username.data}!', 'success').display()
+        return BlogRedirect(BlogUrlFor('home')).link()
+    return BlogTemplate('register.html').render(title='Register', form=form)
 
 
 @_blog.route('/login', methods=['GET', 'POST'])
@@ -32,11 +35,11 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         if form.email.data == 'admin@blog.com' and form.password.data == 'password':
-            flash('You have been logged in!', 'success')
-            return redirect(url_for('home'))
+            BlogFlash('You have been logged in!', 'success').display()
+            return BlogRedirect(BlogUrlFor('home')).link()
         else:
-            flash('Login Unsuccessful. Please check username and password', 'danger')
-    return render_template('login.html', title='Login', form=form)
+            BlogFlash('Login Unsuccessful. Please check username and password', 'danger').display()
+    return BlogTemplate('login.html').render(title='Login', form=form)
 
 
 if __name__ == '__main__':
