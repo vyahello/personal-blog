@@ -27,3 +27,5 @@ Execute next command in your shell
 - `python3.6` is required to run the code
 - run `pip install -r requirements.txt` to install all require python packages
 
+### Run unittests
+- execute `./run-unittests` from shell in the root directory of the repository.

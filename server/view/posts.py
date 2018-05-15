@@ -19,7 +19,7 @@ class Date(ABC):
         pass
 
 
-class _PostDate(Date):
+class PostDate(Date):
     """Represent abstraction for a post date."""
 
     def __init__(self) -> None:
@@ -33,7 +33,7 @@ class BlogPost(Post):
     """Represent a blog post object."""
 
     def __init__(self) -> None:
-        self._date = _PostDate()
+        self._date = PostDate()
 
     def __call__(self) -> List[Dict[str, str]]:
         return [
