@@ -1,0 +1,41 @@
+#!/bin/bash
+
+box(){
+    local arg=$1
+    echo "----- Running $1 tests --------"
+    echo "-------------------------------------"
+}
+
+clear_trash(){
+    local trash='.pytest_cache'
+    [ -d "$trash" ] && echo "removing ${trash} testing trash" && rm -rf ${trash} && echo "environment is cleared"
+}
+
+run_tests(){
+    local arg=$1
+    if [[ ${arg} == "smoke" ]] || [[ ${arg} == "unittest" ]];
+        then
+            box ${arg} && pytest -v -m $1 && clear_trash
+    elif [[ ${arg} == "all" ]]
+        then
+            box ${arg} && pytest -v && clear_trash
+    elif [[ $# -eq 0 ]] || [[ ${arg} == "help" ]]
+        then
+            echo "Tool allows to simplify run of automated tests for blog project."
+            echo ""
+            echo "Available actions:"
+            echo -e " - smoke\t\t run automated smoke tests"
+            echo -e " - unittest\t\t run automated unittest tests"
+            echo -e " - all\t\t\t run all automated tests"
+            echo -e " - help\t\t\t run all automated tests"
+            echo ""
+            echo -e "Note:\t\t\t help will be provided in case of no input parameters"
+    else
+            echo "Invalid parameter provided!"
+            echo "Please use /smoke/, /unittest/ or /help/ key as a parameter. For more info please use help flag"
+            exit 1
+    fi
+
+}
+
+run_tests $1

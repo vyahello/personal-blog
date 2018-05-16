@@ -10,11 +10,13 @@ def date() -> str:
     return datetime.strftime(datetime.today(), _fmt)
 
 
+@pytest.mark.unittest
 def test_post_date(date: str) -> None:
     pdate = PostDate()
     assert date == pdate()
 
 
+@pytest.mark.unittest
 def test_blog_post(date: str) -> None:
     post = BlogPost()
     assert post() == [

@@ -28,4 +28,6 @@ Execute next command in your shell
 - run `pip install -r requirements.txt` to install all require python packages
 
 ### Run unittests
-- execute `./run-unittests` from shell in the root directory of the repository.
+- To run all tests please execute `./run-tests all` from shell in the root directory of the repository.
+- To run basic smoke tests please execute `./run-tests smoke` from shell in the root directory of the repository.
+- To run unittests please execute `./run-tests unittest` from shell in the root directory of the repository.
