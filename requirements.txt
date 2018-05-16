@@ -1,3 +1,5 @@
+requests
+urllib3
 flask
 wtforms
 pytest
