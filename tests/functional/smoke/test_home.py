@@ -6,12 +6,12 @@ _zero: int = 0
 
 
 @pytest.mark.smoke
-def test_default_home_page(default_home_url_response: Response) -> None:
+def test_default_home_page_url(default_home_url_response: Response) -> None:
     assert default_home_url_response.status_code() == _success
 
 
 @pytest.mark.smoke
-def test_home_page(home_url_response: Response) -> None:
+def test_home_page_url(home_url_response: Response) -> None:
     assert home_url_response.status_code() == _success
 
 

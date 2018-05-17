@@ -1,7 +1,6 @@
 #!/bin/bash
 
 box(){
-    local arg=$1
     echo "----- Running $1 tests --------"
     echo "-------------------------------------"
 }
@@ -27,7 +26,7 @@ run_tests(){
             echo -e " - smoke\t\t run automated smoke tests"
             echo -e " - unittest\t\t run automated unittest tests"
             echo -e " - all\t\t\t run all automated tests"
-            echo -e " - help\t\t\t run all automated tests"
+            echo -e " - help\t\t\t display help"
             echo ""
             echo -e "Note:\t\t\t help will be provided in case of no input parameters"
     else

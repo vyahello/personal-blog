@@ -7,6 +7,8 @@ _fmt = '%B %d, %Y'
 
 @pytest.fixture(scope="module")
 def date() -> str:
+    """Return current date time"""
+
     return datetime.strftime(datetime.today(), _fmt)
 
 
