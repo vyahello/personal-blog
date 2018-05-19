@@ -12,7 +12,7 @@ clear_trash(){
 
 run_tests(){
     local arg=$1
-    if [[ ${arg} == "smoke" ]] || [[ ${arg} == "unittest" ]];
+    if [[ ${arg} == "smoke" ]] || [[ ${arg} == "unittest" ]] || [[ ${arg} == "performance" ]];
         then
             box ${arg} && pytest -v -m $1 && clear_trash
     elif [[ ${arg} == "all" ]]
@@ -25,13 +25,14 @@ run_tests(){
             echo "Available actions:"
             echo -e " - smoke\t\t run automated smoke tests"
             echo -e " - unittest\t\t run automated unittest tests"
+            echo -e " - performance\t\t run automated unittest tests"
             echo -e " - all\t\t\t run all automated tests"
             echo -e " - help\t\t\t display help"
             echo ""
             echo -e "Note:\t\t\t help will be provided in case of no input parameters"
     else
             echo "Invalid parameter provided!"
-            echo "Please use /smoke/, /unittest/ or /help/ key as a parameter. For more info please use help flag"
+            echo "Please use /smoke/, /unittest/, /performance/ or /help/ key as a parameter. For more info please use help flag"
             exit 1
     fi
 

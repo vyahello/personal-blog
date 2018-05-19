@@ -1,13 +1,12 @@
 import pytest
 from server.api.responses import Response
 
-_success: int = 200
 _zero: int = 0
 
 
 @pytest.mark.smoke
-def test_about_page_url(about_url_response: Response) -> None:
-    assert about_url_response.status_code() == _success
+def test_about_page_url(about_url_response: Response, success: int) -> None:
+    assert about_url_response.status_code() == success
 
 
 @pytest.mark.smoke
