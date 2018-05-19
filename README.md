@@ -10,6 +10,8 @@ Execute next command in your shell
 ## Structure
 ### Home Page
 ![Screenshot](server/images/home.png)
+### About Page
+![Screenshot](server/images/about.png)
 ### Login Page
 ![Screenshot](server/images/login.png)
 ### Register Page
