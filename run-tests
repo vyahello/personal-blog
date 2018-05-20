@@ -12,12 +12,13 @@ clear_trash(){
 
 run_tests(){
     local arg=$1
+    local test_report="tests/test-report.html"
     if [[ ${arg} == "smoke" ]] || [[ ${arg} == "unittest" ]] || [[ ${arg} == "performance" ]];
         then
-            box ${arg} && pytest -v -m $1 && clear_trash
+            box ${arg} && pytest -v -m $1 --html=${test_report}; clear_trash
     elif [[ ${arg} == "all" ]]
         then
-            box ${arg} && pytest -v && clear_trash
+            box ${arg} && pytest -v --html=${test_report}; clear_trash
     elif [[ $# -eq 0 ]] || [[ ${arg} == "help" ]]
         then
             echo "Tool allows to simplify run of automated tests for blog project."

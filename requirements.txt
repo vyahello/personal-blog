@@ -3,3 +3,4 @@ urllib3
 flask
 wtforms
 pytest
+pytest-html
