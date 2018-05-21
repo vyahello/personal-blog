@@ -2,8 +2,6 @@ import time
 import pytest
 from server.api.requests import Request
 
-_success: int = 200
-
 
 @pytest.mark.performance
 def test_stress(default_home_request: Request, success: int) -> None:

@@ -6,12 +6,10 @@ from server.api.requests import Request
 
 @pytest.mark.performance
 def test_spike(default_home_request: Request, success: int) -> None:
-    c: int = 0
-    stamp: List[int] = [200, 400, 600, 800]
-    while True:
+    times: int = 1000
+    step: List[int] = [200, 400, 600, 800]
+    while times > 0:
         assert default_home_request.response().status_code() == success
-        c += 1
-        if c in stamp:
+        times -= 1
+        if times in step:
             time.sleep(10)
-        if c == 1000:
-            break
