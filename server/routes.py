@@ -1,3 +1,5 @@
+from flask_wtf import FlaskForm
+
 from server.view.flashes import BlogFlash
 from server.view.forms import RegistrationForm, LoginForm
 from server.view.posts import BlogPost
@@ -12,23 +14,23 @@ from flask import request
 
 @blog.route('/')
 @blog.route('/home')
-def home():
+def home() -> str:
     return BlogTemplatePosts('home.html').render(BlogPost())
 
 
 @blog.route('/about')
-def about():
+def about() -> str:
     return BlogTemplate('about.html').render(title='About')
 
 
 @blog.route('/register', methods=['GET', 'POST'])
-def register():
+def register() -> str:
     if current_user.is_authenticated:
         return BlogRedirect(BlogUrlFor('home')).link()
-    form = RegistrationForm()
+    form: FlaskForm = RegistrationForm()
     if form.validate_on_submit():
-        hashed_pass = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(username=form.username.data, email=form.email.data, password=hashed_pass)
+        hashed_pass: str = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user: User = User(username=form.username.data, email=form.email.data, password=hashed_pass)
         db.create_all()
         db.session.add(user)
         db.session.commit()
@@ -38,15 +40,15 @@ def register():
 
 
 @blog.route('/login', methods=['GET', 'POST'])
-def login():
+def login() -> str:
     if current_user.is_authenticated:
         return BlogRedirect(BlogUrlFor('home')).link()
-    form = LoginForm()
+    form: FlaskForm = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
+        user: User = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
-            next_page = request.args.get('next')
+            next_page: str = request.args.get('next')
             return BlogRedirect(BlogUrlFor(next_page if next_page else 'home')).link()
         else:
             BlogFlash('Login Unsuccessful. Please check email and password', 'danger').display()
@@ -54,12 +56,12 @@ def login():
 
 
 @blog.route('/logout')
-def logout():
+def logout() -> str:
     logout_user()
     return BlogRedirect(BlogUrlFor('home')).link()
 
 
 @blog.route('/account')
 @login_required
-def account():
+def account() -> str:
     return BlogTemplate('account.html').render(title='account')
