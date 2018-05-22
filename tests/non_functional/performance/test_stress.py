@@ -11,4 +11,4 @@ def test_stress(default_home_request: Request, success: int) -> None:
         assert default_home_request.response().status_code() == success
         times -= 1
     t2: float = time.time()
-    assert t2-t1 < 10
+    assert t2-t1 < 12

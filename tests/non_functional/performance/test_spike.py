@@ -12,4 +12,4 @@ def test_spike(default_home_request: Request, success: int) -> None:
         assert default_home_request.response().status_code() == success
         times -= 1
         if times in step:
-            time.sleep(10)
+            time.sleep(7)
