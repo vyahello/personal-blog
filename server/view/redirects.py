@@ -11,7 +11,7 @@ class Redirect(ABC):
         pass
 
 
-class BlogRedirect(Redirect):
+class PageRedirect(Redirect):
     """Represent concrete redirection."""
 
     def __init__(self, endpoint: UrlFor) -> None:

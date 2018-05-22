@@ -12,7 +12,7 @@ class Template(ABC):
         pass
 
 
-class BlogTemplate(Template):
+class YFoxTemplate(Template):
     """Represent a blog template."""
 
     def __init__(self, template: str) -> None:
@@ -22,11 +22,11 @@ class BlogTemplate(Template):
         return render_template(self._template, **context)
 
 
-class BlogTemplatePosts(Template):
+class YFoxTemplatePosts(Template):
     """Represent a blog template with posts."""
 
     def __init__(self, template: str) -> None:
-        self._template = BlogTemplate(template)
+        self._template = YFoxTemplate(template)
 
     def render(self, posts: Post) -> str:
         return self._template.render(posts=posts())

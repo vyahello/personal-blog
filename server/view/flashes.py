@@ -10,7 +10,7 @@ class Flash(ABC):
         pass
 
 
-class BlogFlash(Flash):
+class PageFlash(Flash):
     """Represent a flash for a particular event ."""
 
     def __init__(self, message: str, event: str) -> None:

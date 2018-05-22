@@ -10,7 +10,7 @@ class UrlFor(ABC):
         pass
 
 
-class BlogUrlFor(UrlFor):
+class PageUrlFor(UrlFor):
     """Represent concrete url redirection."""
 
     def __init__(self, endpoint: str) -> None:
