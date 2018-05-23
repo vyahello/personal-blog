@@ -1,15 +1,14 @@
 from typing import Union
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from server.server import WebServer
-from server.storage.db import SqlDB
+from server.storage.db import SqlDB, DB
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from server.types import Customizable
 
 blog: Union[Flask, Customizable] = WebServer()
 blog.customize()
-db: SQLAlchemy = SqlDB(blog).synchronize()
+db: DB = SqlDB(blog)
 bcrypt: Bcrypt = Bcrypt(blog)
 login_mng: LoginManager = LoginManager(blog)
 login_mng.login_view: str = 'login'

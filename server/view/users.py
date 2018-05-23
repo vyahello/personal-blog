@@ -31,3 +31,5 @@ class OrdinaryUser(User):
 
     def authenticated(self) -> bool:
         return current_user.is_authenticated
+
+

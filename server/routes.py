@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from server.storage.sessions import UserSession
 from server.view.flashes import PageFlash
 from server.view.forms import RegistrationForm, LoginForm
 from server.view.posts import BlogPost
@@ -8,7 +9,7 @@ from server.view.templates import YFoxTemplatePosts, YFoxTemplate
 from server.view.urls import PageUrlFor
 from server.storage.models import User, Post
 from server import blog, bcrypt, db
-from flask_login import current_user, login_required
+from flask_login import login_required
 from server.view.requests import Request
 from server.view.users import OrdinaryUser
 
@@ -32,10 +33,9 @@ def register() -> str:
     if form.validate_on_submit():
         hashed_pass: str = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user: User = User(username=form.username.data, email=form.email.data, password=hashed_pass)
-        db.create_all()
-        db.session.add(user)
-        db.session.commit()
-        PageFlash('Your account has been created!', 'success').display()
+        UserSession(db).add(user)
+        PageFlash(f'Your account has been created!'
+                  f' You are now able to login with {user.username} username', 'success').display()
         return PageRedirect(PageUrlFor('login')).link()
     return YFoxTemplate('register.html').render(title='Register', form=form)
 
