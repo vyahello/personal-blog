@@ -35,4 +35,4 @@ Execute next command in your shell
 - To run performance tests please execute `./run-tests performance` from shell in the root directory of the repository.
 - To run unittests please execute `./run-tests unittest` from shell in the root directory of the repository.
 ### Testing report
-- Open `tests/test-report.html` file after tests execution
+- Open `test-report.html` file after tests execution

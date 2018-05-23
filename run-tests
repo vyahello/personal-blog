@@ -12,7 +12,7 @@ clear_trash(){
 
 run_tests(){
     local arg=$1
-    local test_report="tests/test-report.html"
+    local test_report="test-report.html"
     if [[ ${arg} == "smoke" ]] || [[ ${arg} == "unittest" ]] || [[ ${arg} == "performance" ]];
         then
             box ${arg} && pytest -v -m $1 --html=${test_report}; clear_trash
