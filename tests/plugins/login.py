@@ -2,18 +2,16 @@ import pytest
 from server.api.requests import Get, Request, Post
 from server.api.responses import Response
 
-_login_url: str = 'http://localhost:5000/login'
-
 
 @pytest.fixture(scope='module')
-def login_url_response() -> Response:
+def login_url_response(url_endpoint) -> Response:
     """Represent response from `login` page"""
 
-    return Get(_login_url).response()
+    return Get(url_endpoint + '/login').response()
 
 
 @pytest.fixture(scope='module')
-def login_user_request() -> Request:
+def login_user_request(url_endpoint) -> Request:
     """Represent ``post`` request for `login` page"""
 
-    return Post(_login_url)
+    return Post(url_endpoint + '/login')

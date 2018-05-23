@@ -6,14 +6,14 @@ _register_url: str = 'http://localhost:5000/register'
 
 
 @pytest.fixture(scope='module')
-def register_url_response() -> Response:
+def register_url_response(url_endpoint) -> Response:
     """Represent response from `register` page"""
 
-    return Get(_register_url).response()
+    return Get(url_endpoint + '/register').response()
 
 
 @pytest.fixture(scope='module')
-def register_user_request() -> Request:
+def register_user_request(url_endpoint) -> Request:
     """Represent ``post`` request for `register` page"""
 
-    return Post(_register_url)
+    return Post(url_endpoint + '/register')
