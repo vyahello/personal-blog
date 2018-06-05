@@ -1,3 +1,4 @@
+from typing import Callable
 from flask_wtf import FlaskForm
 from server.storage.sessions import UserSession
 from server.view.flashes import PageFlash
@@ -6,12 +7,13 @@ from server.view.posts import BlogPost
 from server.view.redirects import PageRedirect
 from server.view.requests import NextPageRequest
 from server.view.templates import YFoxTemplatePosts, YFoxTemplate
-from server.view.urls import PageUrlFor
-from server.storage.models import User, Post
+from server.view.urls import PageUrlFor, UrlFor
+from server.storage.models import User
 from server import blog, bcrypt, db
 from flask_login import login_required
 from server.view.requests import Request
 from server.view.users import OrdinaryUser
+from server.view import users
 
 
 @blog.route('/')
@@ -65,4 +67,6 @@ def logout() -> str:
 @blog.route('/account')
 @login_required
 def account() -> str:
-    return YFoxTemplate('account.html').render(title='account')
+    user: users.User = OrdinaryUser()
+    image_file: Callable[..., UrlFor] = PageUrlFor('static', filename='accounts/' + user.image_file())
+    return YFoxTemplate('account.html').render(title='Account', image_file=image_file())

@@ -19,6 +19,10 @@ class User(ABC):
     def authenticated(self) -> bool:
         pass
 
+    @abstractmethod
+    def image_file(self):
+        pass
+
 
 class OrdinaryUser(User):
     """Represent simple user of a blog."""
@@ -32,4 +36,5 @@ class OrdinaryUser(User):
     def authenticated(self) -> bool:
         return current_user.is_authenticated
 
-
+    def image_file(self):
+        return current_user.image_file
