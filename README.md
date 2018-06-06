@@ -16,6 +16,8 @@ Execute next command in your shell
 ![Screenshot](server/images/login.png)
 ### Register Page
 ![Screenshot](server/images/register.png)
+### Account page
+![Screenshot](server/images/account.png)
 
 ## Contributing
 
