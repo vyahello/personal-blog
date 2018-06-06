@@ -10,13 +10,20 @@ class Request(ABC):
     def get(self) -> str:
         pass
 
+    @abstractmethod
+    def method(self) -> str:
+        pass
 
-class NextPageRequest(Request):
+
+class PageRequest(Request):
     """Represent next request page."""
 
-    def __init__(self, page: str) -> None:
+    def __init__(self, page: str = '') -> None:
         self._page: str = page
         self._req: LocalProxy = request
+
+    def method(self) -> str:
+        return self._req.method
 
     def get(self) -> str:
         return self._req.args.get(self._page)

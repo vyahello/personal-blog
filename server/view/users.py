@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from flask_login import login_user, logout_user, current_user
 from flask_wtf import FlaskForm
+from werkzeug.local import LocalProxy
 from server.storage import models
 
 
@@ -20,12 +21,35 @@ class User(ABC):
         pass
 
     @abstractmethod
-    def image_file(self):
+    def image_file(self) -> str:
+        pass
+
+    @abstractmethod
+    def username(self) -> str:
+        pass
+
+    @abstractmethod
+    def email(self) -> str:
         pass
 
 
-class OrdinaryUser(User):
+class CurrentUser(User):
     """Represent simple user of a blog."""
+
+    def __init__(self) -> None:
+        self._user: LocalProxy = current_user
+
+    @property
+    def image_file(self) -> str:
+        return self._user.image_file
+
+    @property
+    def username(self) -> str:
+        return self._user.username
+
+    @property
+    def email(self) -> str:
+        return self._user.email
 
     def login(self, user: models.User, form: FlaskForm) -> bool:
         return login_user(user, remember=form.remember.data)
@@ -34,7 +58,4 @@ class OrdinaryUser(User):
         return logout_user()
 
     def authenticated(self) -> bool:
-        return current_user.is_authenticated
-
-    def image_file(self):
-        return current_user.image_file
+        return self._user.is_authenticated

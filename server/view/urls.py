@@ -15,7 +15,7 @@ class UrlFor(ABC):
 class PageUrlFor(UrlFor):
     """Represent concrete url redirection."""
 
-    def __init__(self, endpoint: str, **options: Dict[Any, Any]) -> None:
+    def __init__(self, endpoint: str, **options: str) -> None:
         self._endpoint = endpoint
         self._options = options
 

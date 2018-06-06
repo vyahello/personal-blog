@@ -7,3 +7,11 @@ class Customizable(ABC):
     @abstractmethod
     def customize(self) -> None:
         pass
+
+
+class Update(ABC):
+    """Represent abstraction for some save action."""
+
+    @abstractmethod
+    def save(self) -> str:
+        pass
