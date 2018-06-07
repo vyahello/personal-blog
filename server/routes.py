@@ -15,19 +15,29 @@ from server.view.templates import YFoxTemplatePosts, YFoxTemplate
 from server.view.urls import PageUrlFor
 from server.view.users import CurrentUser
 
+_root: str = '/'
+_home: str = '/home'
+_about: str = '/about'
+_register: str = '/register'
+_account: str = '/account'
+_login: str = '/login'
+_logout: str = '/logout'
+_GET: str = 'GET'
+_POST: str = 'POST'
 
-@blog.route('/')
-@blog.route('/home')
+
+@blog.route(_root)
+@blog.route(_home)
 def home() -> str:
     return YFoxTemplatePosts('home.html').render(BlogPost())
 
 
-@blog.route('/about')
+@blog.route(_about)
 def about() -> str:
     return YFoxTemplate('about.html').render(title='About')
 
 
-@blog.route('/register', methods=['GET', 'POST'])
+@blog.route(_register, methods=[_GET, _POST])
 def register() -> str:
     if CurrentUser().authenticated():
         return PageRedirect(PageUrlFor('home')).link()
@@ -42,7 +52,7 @@ def register() -> str:
     return YFoxTemplate('register.html').render(title='Register', form=form)
 
 
-@blog.route('/login', methods=['GET', 'POST'])
+@blog.route(_login, methods=[_GET, _POST])
 def login() -> str:
     if CurrentUser().authenticated():
         return PageRedirect(PageUrlFor('home')).link()
@@ -58,13 +68,13 @@ def login() -> str:
     return YFoxTemplate('login.html').render(title='Login', form=form)
 
 
-@blog.route('/logout')
+@blog.route(_logout)
 def logout() -> str:
     CurrentUser().logout()
     return PageRedirect(PageUrlFor('home')).link()
 
 
-@blog.route('/account', methods=['GET', 'POST'])
+@blog.route(_account, methods=[_GET, _POST])
 @login_required
 def account() -> str:
     form: FlaskForm = UpdateAccountForm()
@@ -77,7 +87,7 @@ def account() -> str:
         user.email = form.email.data
         UserSession(db).add(user)
         form.success()
-    elif PageRequest().method() == 'GET':
+    elif PageRequest().method() == _GET:
         form.username.data = user.username
         form.email.data = user.email
     image_file: Callable = PageUrlFor('static', filename=f'accounts/{user.image_file}')

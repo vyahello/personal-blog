@@ -12,7 +12,7 @@ class DB(ABC):
 
 
 class SqlDB(DB):
-    """Represent conctere SQL DB."""
+    """Represent concrete SQL DB."""
 
     def __init__(self, server: Flask) -> None:
         self._db = SQLAlchemy(server)

@@ -5,13 +5,14 @@ from server.storage.sessions import UserSession
 
 
 _db = UserSession(db).synchronize()
+_pic: str = 'default.jpg'
 
 
 class User(_db.Model, UserMixin):
     id = _db.Column(_db.Integer, primary_key=True)
     username = _db.Column(_db.String(20), unique=True, nullable=False)
     email = _db.Column(_db.String(120), unique=True, nullable=False)
-    image_file = _db.Column(_db.String(20), nullable=False, default='default.jpg')
+    image_file = _db.Column(_db.String(20), nullable=False, default=_pic)
     password = _db.Column(_db.String(60), nullable=False)
     posts = _db.relationship('Post', backref='author', lazy=True)
 
