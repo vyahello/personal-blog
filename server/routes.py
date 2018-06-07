@@ -2,17 +2,13 @@ from typing import Callable
 from flask_login import login_required
 from flask_wtf import FlaskForm
 from server import blog, bcrypt, db
-from server.storage.models import User
+from server.storage.models import User, Post
 from server.storage.sessions import UserSession
 from server.view import users
-from server.view.flashes import PageFlash
-from server.view.forms import RegistrationForm, LoginForm, UpdateAccountForm, UpdateImage
-from server.view.posts import BlogPost
-from server.view.redirects import PageRedirect
-from server.view.requests import PageRequest
-from server.view.requests import Request
-from server.view.templates import YFoxTemplatePosts, YFoxTemplate
-from server.view.urls import PageUrlFor
+from server.view.pages import PageFlash, PageRedirect, Request, PageRequest, PageUrlFor, AbortPage, InformPage
+from server.view.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
+from server.view.image import UpdateImage
+from server.view.templates import YFoxTemplate
 from server.view.users import CurrentUser
 
 _root: str = '/'
@@ -22,14 +18,20 @@ _register: str = '/register'
 _account: str = '/account'
 _login: str = '/login'
 _logout: str = '/logout'
+_new_post: str = '/post/new'
+_post_id: str = '/post/<int:post_id>'
+_update_post: str = _post_id + '/update'
+_delete_post: str = _post_id + '/delete'
 _GET: str = 'GET'
 _POST: str = 'POST'
+_forbidden: int = 403
 
 
 @blog.route(_root)
 @blog.route(_home)
 def home() -> str:
-    return YFoxTemplatePosts('home.html').render(BlogPost())
+    posts = Post.query.all()
+    return YFoxTemplate('home.html').render(posts=posts)
 
 
 @blog.route(_about)
@@ -46,9 +48,8 @@ def register() -> str:
         hashed_pass: str = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user: User = User(username=form.username.data, email=form.email.data, password=hashed_pass)
         UserSession(db).add(user)
-        PageFlash(f'Your account has been created!'
-                  f' You are now able to login with {user.username} username', 'success').display()
-        return PageRedirect(PageUrlFor('login')).link()
+        InformPage(f'Your account has been created! You are now able to login with {user.username} username',
+                   'success', 'login').outcome()
     return YFoxTemplate('register.html').render(title='Register', form=form)
 
 
@@ -92,3 +93,48 @@ def account() -> str:
         form.email.data = user.email
     image_file: Callable = PageUrlFor('static', filename=f'accounts/{user.image_file}')
     return YFoxTemplate('account.html').render(title='Account', image_file=image_file(), form=form)
+
+
+@blog.route(_new_post, methods=[_GET, _POST])
+@login_required
+def new_post() -> str:
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(title=form.title.data, content=form.content.data, author=CurrentUser().get_user)
+        UserSession(db).add(post)
+        form.success()
+    return YFoxTemplate('create_post.html').render(title='New Post', form=form, legend='New Post')
+
+
+@blog.route(_post_id)
+def post(post_id) -> str:
+    post = Post.query.get_or_404(post_id)
+    return YFoxTemplate('post.html').render(title=post.title, post=post)
+
+
+@blog.route(_update_post, methods=[_GET, _POST])
+@login_required
+def update_post(post_id) -> str:
+    post = Post.query.get_or_404(post_id)
+    form = PostForm()
+    if post.author != CurrentUser().get_user:
+        AbortPage(_forbidden).perform()
+    if form.validate_on_submit():
+        post.title = form.title.data
+        post.content = form.content.data
+        UserSession(db).add(post)
+        InformPage('Your post has been updated!', 'success', 'post', post_id=post.id).outcome()
+    elif PageRequest().method() == _GET:
+        form.title.data = post.title
+        form.content.data = post.content
+    return YFoxTemplate('create_post.html').render(title='Update Post', form=form, legend='Update Post')
+
+
+@blog.route(_delete_post, methods=[_POST])
+@login_required
+def delete_post(post_id) -> str:
+    post = Post.query.get_or_404(post_id)
+    if post.author != CurrentUser().get_user:
+        AbortPage(_forbidden).perform()
+    UserSession(db).delete(post)
+    return InformPage('Your post has been deleted!', 'success', 'home').outcome()

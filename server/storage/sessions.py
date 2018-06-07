@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import Any, Callable
 from flask_sqlalchemy import SQLAlchemy
 from server.storage.db import DB
 
@@ -11,7 +12,11 @@ class Session(ABC):
         pass
 
     @abstractmethod
-    def add(self, user) -> None:
+    def add(self, data: Any) -> None:
+        pass
+
+    @abstractmethod
+    def delete(self, data: Any) -> None:
         pass
 
 
@@ -20,17 +25,21 @@ class UserSession(Session):
 
     def __init__(self, db: DB) -> None:
 
-        def add_user(user) -> None:
+        def _sync() -> SQLAlchemy:
             sync = db.synchronize()
             sync.create_all()
-            sync.session.add(user)
-            sync.session.commit()
+            return sync
 
-        self._db = db
-        self._add_user = add_user
+        self._db: DB = db
+        self._sync: Callable[..., SQLAlchemy] = _sync
 
     def synchronize(self) -> SQLAlchemy:
         return self._db.synchronize()
 
-    def add(self, user) -> None:
-        self._add_user(user)
+    def add(self, data: Any) -> None:
+        self._sync().session.add(data)
+        self._sync().session.commit()
+
+    def delete(self, data: Any) -> None:
+        self._sync().session.delete(data)
+        self._sync().session.commit()

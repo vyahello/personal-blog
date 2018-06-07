@@ -15,3 +15,11 @@ class Update(ABC):
     @abstractmethod
     def save(self) -> str:
         pass
+
+
+class Inform(ABC):
+    """Represent abstraction for some inform action."""
+
+    @abstractmethod
+    def outcome(self) -> str:
+        pass

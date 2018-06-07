@@ -40,6 +40,10 @@ class CurrentUser(User):
         self._user: LocalProxy = current_user
 
     @property
+    def get_user(self) -> LocalProxy:
+        return self._user
+
+    @property
     def image_file(self) -> str:
         return self._user.image_file
 

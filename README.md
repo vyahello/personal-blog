@@ -18,6 +18,10 @@ Execute next command in your shell
 ![Screenshot](server/images/register.png)
 ### Account page
 ![Screenshot](server/images/account.png)
+### New Post page
+![Screenshot](server/images/new_post.png)
+### Delete Post
+![Screenshot](server/images/delete_post.png)
 
 ## Contributing
 
