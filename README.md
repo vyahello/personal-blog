@@ -1,10 +1,10 @@
-# Custom blog
+# YFox blog
 Typically a simple blog written in flask - python micro-web framework. Enjoy it!
 
-## Run a blog
+## Run a YFox blog
 Execute next command in your shell
 ```bash
-~ python blog.py
+~ python yfox.py
 ```
 
 ## Structure

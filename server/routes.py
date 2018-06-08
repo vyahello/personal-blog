@@ -1,7 +1,7 @@
 from typing import Callable
 from flask_login import login_required
 from flask_wtf import FlaskForm
-from server import blog, bcrypt, db
+from server import yfox, bcrypt, db
 from server.storage.models import User, Post
 from server.storage.sessions import UserSession
 from server.view import users
@@ -27,19 +27,19 @@ _POST: str = 'POST'
 _forbidden: int = 403
 
 
-@blog.route(_root)
-@blog.route(_home)
+@yfox.route(_root)
+@yfox.route(_home)
 def home() -> str:
     posts = Post.query.all()
     return YFoxTemplate('home.html').render(posts=posts)
 
 
-@blog.route(_about)
+@yfox.route(_about)
 def about() -> str:
     return YFoxTemplate('about.html').render(title='About')
 
 
-@blog.route(_register, methods=[_GET, _POST])
+@yfox.route(_register, methods=[_GET, _POST])
 def register() -> str:
     if CurrentUser().authenticated():
         return PageRedirect(PageUrlFor('home')).link()
@@ -53,7 +53,7 @@ def register() -> str:
     return YFoxTemplate('register.html').render(title='Register', form=form)
 
 
-@blog.route(_login, methods=[_GET, _POST])
+@yfox.route(_login, methods=[_GET, _POST])
 def login() -> str:
     if CurrentUser().authenticated():
         return PageRedirect(PageUrlFor('home')).link()
@@ -69,20 +69,20 @@ def login() -> str:
     return YFoxTemplate('login.html').render(title='Login', form=form)
 
 
-@blog.route(_logout)
+@yfox.route(_logout)
 def logout() -> str:
     CurrentUser().logout()
     return PageRedirect(PageUrlFor('home')).link()
 
 
-@blog.route(_account, methods=[_GET, _POST])
+@yfox.route(_account, methods=[_GET, _POST])
 @login_required
 def account() -> str:
     form: FlaskForm = UpdateAccountForm()
     user: users.User = CurrentUser()
     if form.validate_on_submit():
         if form.picture.data:
-            image = UpdateImage(form, blog)
+            image = UpdateImage(form, yfox)
             user.image_file = image.perform()
         user.username = form.username.data
         user.email = form.email.data
@@ -95,7 +95,7 @@ def account() -> str:
     return YFoxTemplate('account.html').render(title='Account', image_file=image_file(), form=form)
 
 
-@blog.route(_new_post, methods=[_GET, _POST])
+@yfox.route(_new_post, methods=[_GET, _POST])
 @login_required
 def new_post() -> str:
     form = PostForm()
@@ -106,13 +106,13 @@ def new_post() -> str:
     return YFoxTemplate('create_post.html').render(title='New Post', form=form, legend='New Post')
 
 
-@blog.route(_post_id)
+@yfox.route(_post_id)
 def post(post_id) -> str:
     post = Post.query.get_or_404(post_id)
     return YFoxTemplate('post.html').render(title=post.title, post=post)
 
 
-@blog.route(_update_post, methods=[_GET, _POST])
+@yfox.route(_update_post, methods=[_GET, _POST])
 @login_required
 def update_post(post_id) -> str:
     post = Post.query.get_or_404(post_id)
@@ -130,7 +130,7 @@ def update_post(post_id) -> str:
     return YFoxTemplate('create_post.html').render(title='Update Post', form=form, legend='Update Post')
 
 
-@blog.route(_delete_post, methods=[_POST])
+@yfox.route(_delete_post, methods=[_POST])
 @login_required
 def delete_post(post_id) -> str:
     post = Post.query.get_or_404(post_id)

@@ -6,11 +6,11 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from server.types import Customizable
 
-blog: Union[Flask, Customizable] = WebServer()
-blog.customize()
-db: DB = SqlDB(blog)
-bcrypt: Bcrypt = Bcrypt(blog)
-login_mng: LoginManager = LoginManager(blog)
+yfox: Union[Flask, Customizable] = WebServer()
+yfox.customize()
+db: DB = SqlDB(yfox)
+bcrypt: Bcrypt = Bcrypt(yfox)
+login_mng: LoginManager = LoginManager(yfox)
 login_mng.login_view: str = 'login'
 login_mng.login_message_category: str = 'info'
 
