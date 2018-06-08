@@ -2,13 +2,18 @@ import time
 import pytest
 from server.api.requests import Request
 
+_xtime: int = 500
+_zero: int = 0
+_exp_res: int = 7
+_inc: int = 1
+
 
 @pytest.mark.performance
 def test_load(default_home_request: Request, success: int) -> None:
     t1: float = time.time()
-    times: int = 500
-    while times > 0:
+    times: int = _xtime
+    while times > _zero:
         assert default_home_request.response().status_code() == success
-        times -= 1
+        times -= _inc
     t2: float = time.time()
-    assert t2-t1 < 7
+    assert t2-t1 < _exp_res
