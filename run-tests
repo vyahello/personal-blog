@@ -1,7 +1,8 @@
 #!/bin/bash
 
 box(){
-    echo "----- Running $1 tests --------"
+    echo "-------------------------------------"
+    echo "----- Running $1 tests --------------"
     echo "-------------------------------------"
 }
 
@@ -10,9 +11,13 @@ clear_trash(){
     [ -d "$trash" ] && echo "removing ${trash} testing trash" && rm -rf ${trash} && echo "environment is cleared"
 }
 
+
 run_tests(){
     local arg=$1
     local test_report="test-report.html"
+    local tw_tab="\t\t"
+    local th_tab="\t\t\t"
+
     if [[ ${arg} == "smoke" ]] || [[ ${arg} == "unittest" ]] || [[ ${arg} == "performance" ]];
         then
             box ${arg} && pytest -v -m $1 --html=${test_report}; clear_trash
@@ -24,16 +29,16 @@ run_tests(){
             echo "Tool allows to simplify run of automated tests for blog project."
             echo ""
             echo "Available actions:"
-            echo -e " - smoke\t\t run automated smoke tests"
-            echo -e " - unittest\t\t run automated unittest tests"
-            echo -e " - performance\t\t run automated unittest tests"
-            echo -e " - all\t\t\t run all automated tests"
-            echo -e " - help\t\t\t display help"
+            echo -e " - smoke${tw_tab} run automated smoke tests"
+            echo -e " - unittest${tw_tab} run automated unittest tests"
+            echo -e " - performance${tw_tab} run automated unittest tests"
+            echo -e " - all${th_tab} run all automated tests"
+            echo -e " - help${th_tab} display help"
             echo ""
-            echo -e "Note:\t\t\t help will be provided in case of no input parameters"
+            echo -e "Note:${th_tab} help will be provided in case of no input parameters"
     else
-            echo "Invalid parameter provided!"
-            echo "Please use /smoke/, /unittest/, /performance/ or /help/ key as a parameter. For more info please use help flag"
+            echo "Invalid parameter <${arg}> is provided!"
+            echo "Please use <smoke>, <unittest> or <performance> key as a flag. For more info please use <help> flag"
             exit 1
     fi
 
