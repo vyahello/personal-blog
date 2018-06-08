@@ -50,7 +50,7 @@ class UpdateAccountForm(FlaskForm, GenericForm):
     inform: Inform = InformPage('Your account has been updated!', 'success', 'account')
 
     def success(self) -> str:
-        return self.inform.outcome()
+        return self.inform.perform()
 
     def validate_username(self, username: User) -> None:
         if username.data != self.user.username:
@@ -70,4 +70,4 @@ class PostForm(FlaskForm):
     inform: Inform = InformPage('Your post has been updated!', 'success', 'home')
 
     def success(self) -> str:
-        return self.inform.outcome()
+        return self.inform.perform()

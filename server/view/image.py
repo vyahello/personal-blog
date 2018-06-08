@@ -17,7 +17,7 @@ class UpdateImage(Update):
         self._res: Tuple[int, int] = (125, 125)
         self._pic_path: str = 'static/accounts'
 
-    def save(self) -> str:
+    def perform(self) -> str:
         data = self._form.picture.data
         random_hex: str = secrets.token_hex(8)
         _, f_ext = os.path.splitext(data.filename)

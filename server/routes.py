@@ -49,7 +49,7 @@ def register() -> str:
         user: User = User(username=form.username.data, email=form.email.data, password=hashed_pass)
         UserSession(db).add(user)
         InformPage(f'Your account has been created! You are now able to login with {user.username} username',
-                   'success', 'login').outcome()
+                   'success', 'login').perform()
     return YFoxTemplate('register.html').render(title='Register', form=form)
 
 
@@ -83,7 +83,7 @@ def account() -> str:
     if form.validate_on_submit():
         if form.picture.data:
             image = UpdateImage(form, blog)
-            user.image_file = image.save()
+            user.image_file = image.perform()
         user.username = form.username.data
         user.email = form.email.data
         UserSession(db).add(user)
@@ -123,7 +123,7 @@ def update_post(post_id) -> str:
         post.title = form.title.data
         post.content = form.content.data
         UserSession(db).add(post)
-        InformPage('Your post has been updated!', 'success', 'post', post_id=post.id).outcome()
+        InformPage('Your post has been updated!', 'success', 'post', post_id=post.id).perform()
     elif PageRequest().method() == _GET:
         form.title.data = post.title
         form.content.data = post.content
@@ -137,4 +137,4 @@ def delete_post(post_id) -> str:
     if post.author != CurrentUser().get_user:
         AbortPage(_forbidden).perform()
     UserSession(db).delete(post)
-    return InformPage('Your post has been deleted!', 'success', 'home').outcome()
+    return InformPage('Your post has been deleted!', 'success', 'home').perform()

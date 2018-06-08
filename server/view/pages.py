@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from flask import flash, redirect, request, url_for, abort
 from werkzeug.local import LocalProxy
-from server.types import Inform
+from server.types import Inform, Abort
 
 
 class UrlFor(ABC):
@@ -37,14 +37,6 @@ class Request(ABC):
 
     @abstractmethod
     def method(self) -> str:
-        pass
-
-
-class Abort(ABC):
-    """Represent abstraction for abort action."""
-
-    @abstractmethod
-    def perform(self) -> str:
         pass
 
 
@@ -111,6 +103,6 @@ class InformPage(Inform):
         self._flash = PageFlash(message, outcome)
         self._red = PageRedirect(PageUrlFor(path, **options))
 
-    def outcome(self) -> str:
+    def perform(self) -> str:
         self._flash.display()
         return self._red.link()

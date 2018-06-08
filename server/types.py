@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import ABC,  abstractmethod
 
 
 class Customizable(ABC):
@@ -9,17 +9,27 @@ class Customizable(ABC):
         pass
 
 
-class Update(ABC):
-    """Represent abstraction for some save action."""
+class Action(ABC):
+    """Represent abstraction for an object."""
 
     @abstractmethod
-    def save(self) -> str:
+    def perform(self) -> str:
         pass
 
 
-class Inform(ABC):
-    """Represent abstraction for some inform action."""
+class Update(Action):
+    """Represent object for some save action."""
 
-    @abstractmethod
-    def outcome(self) -> str:
-        pass
+    pass
+
+
+class Inform(Action):
+    """Represent object for some inform action."""
+
+    pass
+
+
+class Abort(Action):
+    """Represent object for abort action."""
+
+    pass
