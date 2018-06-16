@@ -1,6 +1,23 @@
 # YFox blog
 Typically a simple blog written in flask - python micro-web framework. Enjoy it!
 
+## Table of contents
+- [Run a YFox blog](#run-a-yfox-blog)
+  - [Structure](#structure)
+    - [Home Page](#home-page)
+    - [About Page](#about-page)
+    - [Login Page](#login-page)
+    - [Register Page](#register-page)
+    - [Account Page](#account-page)
+    - [New Post Page](#new-post-page)
+    - [Delete Page](#delete-page)
+- [Contributing](#contributing)
+  - [Setup](#setup)
+- [Run automated tests](#run-automated-tests)
+  - [Using run-test script](#using-run-test-script)
+  - [Advanced usage with pytest](#advanced-usage-with-pytest)
+  - [Testing report](#testing-report)
+
 ## Run a YFox blog
 Execute next command in your shell
 ```bash
@@ -129,7 +146,7 @@ SKIP [5] /home/myprojects/blog/tests/plugins/hooks.py:48: Skipping [@performance
 ```
 - Run tests with particular fixture
 ```bash
-(blog) ~/blog pytest --usefixtures register_url_response
+(blog) ~/blog pytest --use-fixtures register_url_response
 ============================================================================== test session starts ===============================================================================
 platform darwin -- Python 3.6.5, pytest-3.5.1, py-1.5.3, pluggy-0.6.0 -- /home/.pyenv/versions/3.6.5/envs/blog/bin/python
 Project: YFox flask blog
