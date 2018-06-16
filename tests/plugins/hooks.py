@@ -5,9 +5,10 @@ from _pytest.python import Function
 
 
 def pytest_configure(config: Config):
-    """Enable verbose output when running tests. Simulate ``-v`` option in a command line."""
+    """Enable verbose and output when running tests. Simulate `-v` and `-s` option in a command line."""
 
     config.option.verbose: int = 1
+    config.option.capture: str = 'yes'
 
 
 def pytest_report_header(config: Config):
@@ -20,14 +21,14 @@ def pytest_report_header(config: Config):
 def pytest_addoption(parser: Parser):
     """Add custom parameters."""
 
-    parser.addoption("--skip-marker",
+    parser.addoption("--skip-markers",
                      "-S",
                      nargs="*",
                      action="store",
                      default=None,
                      help="skip test(s) with certain marker.")
 
-    parser.addoption("--usefixtures",
+    parser.addoption("--use-fixtures",
                      "-U",
                      nargs="*",
                      action="store",
@@ -38,26 +39,28 @@ def pytest_addoption(parser: Parser):
 def pytest_runtest_setup(item: Function):
     """Skip tests that belong to specific marker with ``--skip-marker`` cmd option."""
 
-    markers: str = item.config.getvalue("--skip-marker")
+    markers: str = item.config.getvalue("skip_markers")
 
-    for marker in markers:
-        if marker in item.keywords:
-            pytest.skip(f"Skipping [@{marker}] pytest marker")
+    if markers:
+        for marker in markers:
+            if marker in item.keywords:
+                pytest.skip(f"Skipping [@{marker}] pytest marker")
 
 
 def pytest_collection_modifyitems(items: List[Function], config: Config):
-    fixtures: str = config.getoption('usefixtures')
-    selected_tests: List = []
-    deselected_tests: List = []
+    fixtures: str = config.getoption('use_fixtures')
 
-    for fixture in fixtures:
+    if fixtures:
+        selected_tests: List = []
+        deselected_tests: List = []
 
-        if fixture:
-            for test in items:
-                if fixture in test.fixturenames:
-                    selected_tests.append(test)
-                else:
-                    deselected_tests.append(test)
+        for fixture in fixtures:
+            if fixture:
+                for test in items:
+                    if fixture in test.fixturenames:
+                        selected_tests.append(test)
+                    else:
+                        deselected_tests.append(test)
 
-    config.hook.pytest_deselected(items=deselected_tests)
-    items[:] = selected_tests
+        config.hook.pytest_deselected(items=deselected_tests)
+        items[:] = selected_tests
