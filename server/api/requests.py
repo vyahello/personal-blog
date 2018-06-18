@@ -44,7 +44,8 @@ class SafeRequest(Request):
         self._code: int = status_code
 
     def response(self, **kwargs: Dict[Any, Any]) -> Response:
-        if self._req.response().status_code() != self._code:
+        response: Response = self._req.response()
+        if response.status_code() != self._code:
             raise HttpResponseError(
-                'HTTP response error with {} status code!!!'.format(self._req.response().status_code()))
-        return self._req.response()
+                'HTTP response error with {} status code!!!'.format(response.status_code()))
+        return response
