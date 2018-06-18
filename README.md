@@ -1,5 +1,6 @@
 # YFox blog
-Typically a simple blog written in flask - python micro-web framework. Enjoy it!
+Typically a simple blog written in flask - python micro-web framework. 
+You can go to direct hosting link to try it - [https://vyahfox.pythonanywhere.com](https://vyahfox.pythonanywhere.com). Enjoy it!
 
 ## Table of contents
 - [Run a YFox blog](#run-a-yfox-blog)
