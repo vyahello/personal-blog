@@ -16,8 +16,6 @@ venv
 .python-version
 .pytest_cache/
 
-# database files
-*.db
 
 # test report trash
 assets/
