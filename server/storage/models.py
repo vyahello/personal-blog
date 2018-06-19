@@ -1,14 +1,17 @@
 from datetime import datetime
+from flask_sqlalchemy import SQLAlchemy
 from server import db, login_mng
 from flask_login import UserMixin
 from server.storage.sessions import UserSession
 
 
-_db = UserSession(db).synchronize()
+_db: SQLAlchemy = UserSession(db).synchronize()
 _pic: str = 'default.jpg'
 
 
 class User(_db.Model, UserMixin):
+    """Represent user model."""
+
     id = _db.Column(_db.Integer, primary_key=True)
     username = _db.Column(_db.String(20), unique=True, nullable=False)
     email = _db.Column(_db.String(120), unique=True, nullable=False)
@@ -21,6 +24,8 @@ class User(_db.Model, UserMixin):
 
 
 class Post(_db.Model):
+    """Represent post model."""
+
     id = _db.Column(_db.Integer, primary_key=True)
     title = _db.Column(_db.String(1000), nullable=False)
     date_posted = _db.Column(_db.DateTime, nullable=False, default=datetime.utcnow)
