@@ -10,5 +10,3 @@ flask_sqlalchemy
 flask_sslify
 flask_wtf
 wtforms
-pytest
-pytest-html

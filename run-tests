@@ -14,7 +14,7 @@ clear_trash(){
 
 run_tests(){
     local arg=$1
-    local test_report="test-report.html"
+    local test_report="results/test-report.html"
 
     if [[ ${arg} == "smoke" ]] || [[ ${arg} == "unittest" ]] || [[ ${arg} == "performance" ]];
         then
