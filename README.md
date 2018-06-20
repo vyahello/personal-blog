@@ -51,7 +51,8 @@ Execute next command in your shell
   git config --local user.email "vjagello93@gmail.com"
   ```
 - `python3.6` is required to run the code
-- run `pip install -r requirements.txt` to install all require python packages
+- run `pip install -r requirements-yfox.txt` to install all required yfox packages
+- run `pip install -r requirements-at-tests.txt` to install all required testing packages
 
 ## Run automated tests
 ### Using run-test script
