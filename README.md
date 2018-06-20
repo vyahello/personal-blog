@@ -4,25 +4,35 @@ You can go to direct hosting link to try it - [https://vyahfox.pythonanywhere.co
 
 ## Table of contents
 - [Run a YFox blog](#run-a-yfox-blog)
-  - [Structure](#structure)
-    - [Home Page](#home-page)
-    - [About Page](#about-page)
-    - [Login Page](#login-page)
-    - [Register Page](#register-page)
-    - [Account Page](#account-page)
-    - [New Post Page](#new-post-page)
-    - [Delete Page](#delete-page)
+  - [Using python runner](#using-python-runner)
+  - [Using official docker image](#using-official-docker-image)
+- [Structure](#structure)
+  - [Home Page](#home-page)
+  - [About Page](#about-page)
+  - [Login Page](#login-page)
+  - [Register Page](#register-page)
+  - [Account Page](#account-page)
+  - [New Post Page](#new-post-page)
+  - [Delete Page](#delete-page)
 - [Contributing](#contributing)
   - [Setup](#setup)
 - [Run automated tests](#run-automated-tests)
   - [Using run-test script](#using-run-test-script)
+  - [Using official docker image](#using-official-docker-image)
   - [Advanced usage with pytest](#advanced-usage-with-pytest)
   - [Testing report](#testing-report)
 
 ## Run a YFox blog
-Execute next command in your shell
+### Using python runner
+Run script from the root directory of the project:
 ```bash
 ~ python yfox.py
+```
+
+### Using official docker image
+Please use `yfox-blog` docker image with particular version `vyahello/yfox-blog:<tag-version>`
+```bash
+~ docker run -it --name=yfox-blog --rm -p 5000:5000 vyahello/yfox-blog:1.0.0
 ```
 
 ## Structure
@@ -104,6 +114,13 @@ tests/non_functional/performance/test_stress.py::test_stress PASSED             
 =========================================================================== 26 passed in 42.24 seconds ===========================================================================
 removing .pytest_cache testing trash
 environment is cleared
+```
+### Using official docker image
+- Use `yfox-blog-at-tests` docker image with particular tag version `vyahello/yfox-blog-at-tests:<tag-version>`.
+- While running docker image please pass desired tests parameter you want to run after a docker image e.g `vyahello/yfox-blog-at-tests:1.0.0 performance`. Note by default all tests will be run.
+- Open `results/` directory to see `test-report.html` testing report after executed all desired tests.
+```bash
+docker run -it --net=host --volume $(pwd)/results:/at-tests/results --rm --name=yfox-blog-at-tests vyahello/yfox-blog-at-tests:1.0.0
 ```
 ### Advanced usage with pytest
 Run tests with `pytest` for developing and debugging purposes mostly.
