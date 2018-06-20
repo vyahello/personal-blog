@@ -21,6 +21,8 @@ You can go to direct hosting link to try it - [https://vyahfox.pythonanywhere.co
   - [Using official docker image](#using-official-docker-image)
   - [Advanced usage with pytest](#advanced-usage-with-pytest)
   - [Testing report](#testing-report)
+- [Run YFox blog and automated tests together](#run-yfox-blog-and-automated-tests-together)
+
 
 ## Run a YFox blog
 ### Using python runner
@@ -182,3 +184,9 @@ tests/functional/smoke/test_register.py::test_register_page_content PASSED      
 - Open `test-report.html` file after tests execution
 #### Demo
 ![Screenshot](server/images/test-report.png)
+
+## Run YFox blog and automated tests together
+Use `docker-compose.yaml` file to run blog firstly and then automated tests. Test results will be stored in `results/` directory in current working directory.
+```bash
+~ docker-compose -p yfox up
+```

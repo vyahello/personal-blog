@@ -1,0 +1,14 @@
+version: "2"
+services:
+  yfox-blog:
+    image: vyahello/yfox-blog:1.0.0
+    hostname: yfox-blog
+    ports:
+    - 5000:5000
+  yfox-blog-at-tests:
+    image: vyahello/yfox-blog-at-tests:1.0.0
+    depends_on:
+      - yfox-blog
+    volumes:
+      - ./results:/at-tests/results
+    network_mode: host
