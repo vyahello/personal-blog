@@ -19,3 +19,6 @@ venv
 
 # test report trash
 assets/
+
+# ignore test results folder
+results/
