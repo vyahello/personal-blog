@@ -181,12 +181,12 @@ tests/functional/smoke/test_register.py::test_register_page_content PASSED      
 ```
 
 ### Testing report
-- Open `test-report.html` file after tests execution
+- Open `tests/results/test-report.html` file after tests execution
 #### Demo
 ![Screenshot](server/images/test-report.png)
 
 ## Run YFox blog and automated tests together
-Use `docker-compose.yaml` file to run blog firstly and then automated tests. Test results will be stored in `results/` directory in current working directory.
+Use `docker-compose.yaml` file to run blog firstly and then automated tests. Test results will be stored in `results/` directory in your current working directory.
 ```bash
 ~ docker-compose -p yfox up
 ```
