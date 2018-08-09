@@ -15,10 +15,3 @@ venv
 # python identifiers
 .python-version
 .pytest_cache/
-
-
-# test report trash
-assets/
-
-# ignore test results folder
-results/
