@@ -15,3 +15,8 @@ venv
 # python identifiers
 .python-version
 .pytest_cache/
+
+
+# ignore test results
+results/
+assets/
