@@ -14,14 +14,13 @@ You can go to direct hosting link to try it - [https://vyahfox.pythonanywhere.co
   - [Account Page](#account-page)
   - [New Post Page](#new-post-page)
   - [Delete Page](#delete-page)
-- [Contributing](#contributing)
-  - [Setup](#setup)
 - [Run automated tests](#run-automated-tests)
   - [Using run-test script](#using-run-test-script)
   - [Using official docker image](#using-official-docker-image)
   - [Advanced usage with pytest](#advanced-usage-with-pytest)
   - [Testing report](#testing-report)
 - [Run YFox blog and automated tests together](#run-yfox-blog-and-automated-tests-together)
+- [Contributing](#contributing)
 
 
 ## Run a YFox blog
@@ -181,7 +180,6 @@ Use `docker-compose.yaml` file to run blog firstly and then automated tests. Tes
 
 ## Contributing
 
-### Setup
 - clone the repository
 - configure Git for the first time after cloning with your name and email
   ```bash
