@@ -1,5 +1,5 @@
 FROM python:3.6.5-slim
 RUN apt-get update && apt-get autoclean -y && pip install --no-cache-dir --upgrade pip
 LABEL metadata="The base image for YFox blog" \
-      version=0.1.0 \
+      version=0.2.0 \
       maintainer="Volodymyr Yahello <vjagello93@gmail.com>"

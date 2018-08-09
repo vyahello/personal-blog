@@ -1,6 +1,6 @@
-FROM vyahello/yfox-base:0.1.0
+FROM vyahello/yfox-base:0.2.0
 LABEL metadata="Main image for YFox blog" \
-      version=1.0.0 \
+      version=1.0.1 \
       maintainer="Volodymyr Yahello <vjagello93@gmail.com>"
 WORKDIR blog/
 COPY server server

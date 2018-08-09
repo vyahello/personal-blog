@@ -1,6 +1,6 @@
-FROM vyahello/yfox-base:0.1.0
+FROM vyahello/yfox-base:0.2.0
 LABEL metadata="Main automated tests image for YFox blog" \
-      version=1.0.0 \
+      version=1.1.0 \
       maintainer="Volodymyr Yahello <vjagello93@gmail.com>"
 WORKDIR at-tests/
 VOLUME results/
@@ -8,6 +8,7 @@ COPY server/api server/api/
 COPY server/view/posts.py server/view/__init__.py server/view/
 COPY tests tests
 COPY requirements-at-tests.txt run-tests ./
+COPY pytest.ini ./
 RUN pip install --no-cache-dir -r requirements-at-tests.txt && \
     rm requirements-at-tests.txt
 CMD ./run-tests all
