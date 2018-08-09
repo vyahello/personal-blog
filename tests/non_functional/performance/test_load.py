@@ -1,6 +1,6 @@
 import time
-import pytest
 from server.api.requests import Request
+from tests.markers import performance
 
 _xtime: int = 500
 _zero: int = 0
@@ -8,7 +8,7 @@ _exp_res: int = 7
 _inc: int = 1
 
 
-@pytest.mark.performance
+@performance
 def test_load(default_home_request: Request, success: int) -> None:
     t1: float = time.time()
     times: int = _xtime

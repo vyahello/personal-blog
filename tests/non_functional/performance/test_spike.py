@@ -1,7 +1,7 @@
 import time
 from typing import List
-import pytest
 from server.api.requests import Request
+from tests.markers import performance
 
 _xtime: int = 500
 _step: List[int] = [200, 400, 600, 800]
@@ -10,7 +10,7 @@ _inc: int = 1
 _sleep: int = 7
 
 
-@pytest.mark.performance
+@performance
 def test_spike(default_home_request: Request, success: int) -> None:
     times: int = _xtime
     step: List[int] = _step
