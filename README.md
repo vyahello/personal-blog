@@ -53,18 +53,6 @@ Please use `yfox-blog` docker image with particular version `vyahello/yfox-blog:
 ### Delete Post
 ![Screenshot](server/images/delete_post.png)
 
-## Contributing
-
-### Setup
-- clone the repository
-- configure Git for the first time after cloning with your name and email
-  ```bash
-  git config --local user.name "Volodymyr Yahello"
-  git config --local user.email "vjagello93@gmail.com"
-  ```
-- `python3.6` is required to run the code
-- run `pip install -r requirements-yfox.txt` to install all required yfox packages
-- run `pip install -r requirements-at-tests.txt` to install all required testing packages
 
 ## Run automated tests
 ### Using run-test script
@@ -190,3 +178,16 @@ Use `docker-compose.yaml` file to run blog firstly and then automated tests. Tes
 ```bash
 ~ docker-compose -p yfox up
 ```
+
+## Contributing
+
+### Setup
+- clone the repository
+- configure Git for the first time after cloning with your name and email
+  ```bash
+  git config --local user.name "Volodymyr Yahello"
+  git config --local user.email "vjagello93@gmail.com"
+  ```
+- `python3.6` is required to run the code
+- run `pip install -r requirements-yfox.txt` to install all required yfox packages
+- run `pip install -r requirements-at-tests.txt` to install all required testing packages
