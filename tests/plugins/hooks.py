@@ -1,6 +1,7 @@
 from typing import List
 import pytest
-from _pytest.config import Config, Parser
+from _pytest.config import Config
+from _pytest.config.argparsing import Parser
 from _pytest.python import Function
 
 
