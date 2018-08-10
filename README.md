@@ -33,7 +33,7 @@ Run script from the root directory of the project:
 ### Using official docker image
 Please use `yfox-blog` docker image with particular version `vyahello/yfox-blog:<tag-version>`
 ```bash
-~ docker run -it --name=yfox-blog --rm -p 5000:5000 vyahello/yfox-blog:1.0.0
+~ docker run -it --name=yfox-blog --rm -p 5000:5000 vyahello/yfox-blog:1.1.0
 ```
 
 ## Structure
@@ -109,7 +109,7 @@ environment is cleared
 - While running docker image please pass desired tests parameter you want to run after a docker image e.g `vyahello/yfox-blog-at-tests:1.0.0 performance`. Note by default all tests will be run.
 - Open `results/` directory to see `test-report.html` testing report after executed all desired tests.
 ```bash
-docker run -it --net=host --volume $(pwd)/results:/at-tests/results --rm --name=yfox-blog-at-tests vyahello/yfox-blog-at-tests:1.0.0
+docker run -it --net=host --volume $(pwd)/results:/at-tests/results --rm --name=yfox-blog-at-tests vyahello/yfox-blog-at-tests:1.1.0
 ```
 ### Advanced usage with pytest
 Run tests with `pytest` for developing and debugging purposes mostly.
