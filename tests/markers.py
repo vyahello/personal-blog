@@ -1,5 +1,7 @@
 import pytest
+from _pytest.mark import MarkDecorator
 
-smoke = pytest.mark.smoke
-unittest = pytest.mark.unittest
-performance = pytest.mark.performance
+
+smoke: MarkDecorator = pytest.mark.smoke
+unittest: MarkDecorator = pytest.mark.unittest
+performance: MarkDecorator = pytest.mark.performance
