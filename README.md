@@ -175,7 +175,7 @@ tests/functional/smoke/test_register.py::test_register_page_content PASSED      
 ## Run YFox blog and automated tests together
 Use `docker-compose.yaml` file to run blog firstly and then automated tests. Test results will be stored in `results/` directory in your current working directory.
 ```bash
-~ docker-compose -p yfox up
+~ docker-compose -p yfox up --abort-on-container-exit
 ```
 
 ## Contributing
@@ -184,7 +184,7 @@ Use `docker-compose.yaml` file to run blog firstly and then automated tests. Tes
 - configure Git for the first time after cloning with your name and email
   ```bash
   git config --local user.name "Volodymyr Yahello"
-  git config --local user.email "vjagello93@gmail.com"
+  git config --local user.email "vyahello@gmail.com"
   ```
 - `python3.6` is required to run the code
 - run `pip install -r requirements-yfox.txt` to install all required yfox packages
