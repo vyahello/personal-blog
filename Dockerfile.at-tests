@@ -1,7 +1,7 @@
 FROM vyahello/yfox-base:0.2.0
 LABEL metadata="Main automated tests image for YFox blog" \
-      version=1.1.0 \
-      maintainer="Volodymyr Yahello <vjagello93@gmail.com>"
+      version=1.2.0 \
+      maintainer="Volodymyr Yahello <vyahello@gmail.com>"
 WORKDIR at-tests/
 VOLUME results/
 COPY server/api server/api/
