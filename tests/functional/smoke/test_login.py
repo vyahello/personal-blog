@@ -1,5 +1,4 @@
 from typing import Dict
-import pytest
 from server.api.requests import Request
 from server.api.responses import Response
 from tests.markers import smoke
@@ -19,8 +18,9 @@ def test_login_page_content(login_url_response: Response) -> None:
 
 @smoke
 def test_login_user(login_user_request: Request, success: int) -> None:
-    data: Dict[str, str] = {"email": "admin@blog.com",
-                            "password": "password",
-                            "submit": "Login"}
-
+    data: Dict[str, str] = {
+        "email": "admin@blog.com",
+        "password": "password",
+        "submit": "Login"
+    }
     assert login_user_request.response(data=data).status_code() == success

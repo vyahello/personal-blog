@@ -1,4 +1,3 @@
-import pytest
 from server.api.responses import Response
 from tests.markers import smoke
 

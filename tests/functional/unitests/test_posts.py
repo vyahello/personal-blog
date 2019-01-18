@@ -3,7 +3,7 @@ from datetime import datetime
 from server.view.posts import PostDate, BlogPost
 from tests.markers import unittest
 
-_fmt = '%B %d, %Y'
+_fmt: str = '%B %d, %Y'
 
 
 @pytest.fixture(scope="module")
