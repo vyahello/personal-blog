@@ -1,6 +1,9 @@
 #!/bin/bash
 
-box(){
+TEST_REPORT="tests/results/test-report.html"
+
+
+box() {
     echo "-------------------------------------"
     echo "----- Running $1 tests --------------"
     echo "-------------------------------------"
@@ -12,34 +15,37 @@ clear_trash(){
 }
 
 
-run_tests(){
+helper() {
+    echo "Tool allows to simplify run of automated tests for blog project."
+    echo ""
+    echo "Available actions:"
+    echo -e " - smoke\t\t run automated smoke tests"
+    echo -e " - unittest\t\t run automated unittest tests"
+    echo -e " - performance\t\t run automated unittest tests"
+    echo -e " - all\t\t\t run all automated tests"
+    echo -e " - help\t\t\t display help"
+    echo ""
+    echo -e "Note:\t\t help will be provided in case of no input parameters"
+}
+
+
+error_msg() {
+    echo "Invalid parameter <$1> is provided!"
+    echo "Please use <smoke>, <unittest> or <performance> key as a flag. For more info please use <help> flag"
+    exit 1
+}
+
+
+run_tests() {
     local arg=$1
-    local test_report="tests/results/test-report.html"
-
     if [[ ${arg} == "smoke" ]] || [[ ${arg} == "unittest" ]] || [[ ${arg} == "performance" ]];
-        then
-            box ${arg} && pytest -m $1 --html=${test_report}; clear_trash
+        then box ${arg} && pytest -m ${arg} --html=${TEST_REPORT}; clear_trash
     elif [[ ${arg} == "all" ]]
-        then
-            box ${arg} && pytest --html=${test_report}; clear_trash
+        then box ${arg} && pytest --html=${TEST_REPORT}; clear_trash
     elif [[ $# -eq 0 ]] || [[ ${arg} == "help" ]]
-        then
-            echo "Tool allows to simplify run of automated tests for blog project."
-            echo ""
-            echo "Available actions:"
-            echo -e " - smoke\t\t run automated smoke tests"
-            echo -e " - unittest\t\t run automated unittest tests"
-            echo -e " - performance\t\t run automated unittest tests"
-            echo -e " - all\t\t\t run all automated tests"
-            echo -e " - help\t\t\t display help"
-            echo ""
-            echo -e "Note:\t\t help will be provided in case of no input parameters"
-    else
-            echo "Invalid parameter <${arg}> is provided!"
-            echo "Please use <smoke>, <unittest> or <performance> key as a flag. For more info please use <help> flag"
-            exit 1
+        then helper
+    else error_msg ${arg}
     fi
-
 }
 
 run_tests $1
