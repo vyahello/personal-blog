@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Dict
 from wtforms import ValidationError
-from server.storage.models import User
+from blog.storage.models import User
 
 
 class Query(ABC):

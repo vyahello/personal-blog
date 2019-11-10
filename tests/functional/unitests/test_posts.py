@@ -1,6 +1,6 @@
 import pytest
 from datetime import datetime
-from server.view.posts import PostDate, BlogPost
+from blog.view.posts import PostDate, BlogPost
 from tests.markers import unittest
 
 _fmt: str = '%B %d, %Y'

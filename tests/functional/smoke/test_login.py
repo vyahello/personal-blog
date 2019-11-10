@@ -1,6 +1,6 @@
 from typing import Dict
-from server.api.requests import Request
-from server.api.responses import Response
+from blog.api.requests import Request
+from blog.api.responses import Response
 from tests.markers import smoke
 
 _zero: int = 0

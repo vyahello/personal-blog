@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from flask import flash, redirect, request, url_for, abort
 from werkzeug.local import LocalProxy
-from server.types import Inform, Abort
+from blog.types import Inform, Abort
 
 
 class UrlFor(ABC):

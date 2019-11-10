@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Any, Callable
 from flask_sqlalchemy import SQLAlchemy
-from server.storage.db import DB
+from blog.storage.db import DB
 
 
 class Session(ABC):

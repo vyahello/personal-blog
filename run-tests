@@ -9,7 +9,7 @@ box() {
     echo "-------------------------------------"
 }
 
-clear_trash(){
+clear-trash(){
     local trash='.pytest_cache'
     [ -d "$trash" ] && echo "removing ${trash} testing trash" && rm -rf ${trash} && echo "environment is cleared"
 }
@@ -29,23 +29,23 @@ helper() {
 }
 
 
-error_msg() {
+raise-error-message() {
     echo "Invalid parameter <$1> is provided!"
     echo "Please use <smoke>, <unittest> or <performance> key as a flag. For more info please use <help> flag"
     exit 1
 }
 
 
-run_tests() {
+run-tests() {
     local arg=$1
     if [[ ${arg} == "smoke" ]] || [[ ${arg} == "unittest" ]] || [[ ${arg} == "performance" ]];
-        then box ${arg} && pytest -m ${arg} --html=${TEST_REPORT}; clear_trash
+        then box "${arg}" && pytest -m "${arg}" --html=${TEST_REPORT}; clear-trash
     elif [[ ${arg} == "all" ]]
-        then box ${arg} && pytest --html=${TEST_REPORT}; clear_trash
-    elif [[ $# -eq 0 ]] || [[ ${arg} == "help" ]]
+        then box "${arg}" && pytest --html=${TEST_REPORT}; clear-trash
+    elif [[ $# -eq 0 ]] || [[ ${arg} == "--help" ]] || [[ ${arg} == "-h" ]]
         then helper
-    else error_msg ${arg}
+    else raise-error-message "${arg}"
     fi
 }
 
-run_tests $1
+run-tests "$1"

@@ -1,6 +1,6 @@
 import pytest
-from server.api.requests import Get, Request, Post
-from server.api.responses import Response
+from blog.api.requests import Get, Request, Post
+from blog.api.responses import Response
 
 _login: str = '/login'
 

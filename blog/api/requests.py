@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Dict, Any
 from requests import Session
-from server.api.responses import Response, HttpResponseError, HttpResponse
+from blog.api.responses import Response, HttpResponseError, HttpResponse
 
 
 class Request(ABC):

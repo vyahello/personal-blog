@@ -1,6 +1,6 @@
 import pytest
-from server.api.requests import Get
-from server.api.responses import Response
+from blog.api.requests import Get
+from blog.api.responses import Response
 
 _new_post: str = '/post/new'
 _exist_post_id: str = '/post/4'

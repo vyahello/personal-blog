@@ -1,5 +1,5 @@
 from flask import Flask
-from server.types import Customizable
+from blog.types import Customizable
 
 
 class WebServer(Flask, Customizable):

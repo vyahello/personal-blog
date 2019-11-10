@@ -3,8 +3,8 @@ import secrets
 from typing import Tuple
 from PIL import Image
 from flask_wtf import FlaskForm
-from server import WebServer
-from server.types import Update
+from blog import WebServer
+from blog.types import Update
 
 
 class UpdateImage(Update):

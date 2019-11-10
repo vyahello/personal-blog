@@ -1,4 +1,4 @@
-from server.api.responses import Response
+from blog.api.responses import Response
 from tests.markers import smoke
 
 

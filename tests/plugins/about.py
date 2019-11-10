@@ -1,6 +1,6 @@
 import pytest
-from server.api.requests import Get
-from server.api.responses import Response
+from blog.api.requests import Get
+from blog.api.responses import Response
 
 _about: str = '/about'
 

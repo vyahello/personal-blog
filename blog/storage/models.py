@@ -1,8 +1,8 @@
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
-from server import db, login_mng
+from blog import db, login_mng
 from flask_login import UserMixin
-from server.storage.sessions import UserSession
+from blog.storage.sessions import UserSession
 
 
 _db: SQLAlchemy = UserSession(db).synchronize()

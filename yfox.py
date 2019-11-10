@@ -1,4 +1,4 @@
-from server import yfox
+from blog import yfox
 
 
 if __name__ == '__main__':

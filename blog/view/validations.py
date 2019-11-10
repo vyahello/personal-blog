@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
-from server.storage.models import User
-from server.storage.queries import Query, UserQuery
+from blog.storage.models import User
+from blog.storage.queries import Query, UserQuery
 
 
 class Validation(ABC):

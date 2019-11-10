@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from flask_login import login_user, logout_user, current_user
 from flask_wtf import FlaskForm
 from werkzeug.local import LocalProxy
-from server.storage import models
+from blog.storage import models
 
 
 class User(ABC):

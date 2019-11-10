@@ -1,15 +1,15 @@
 from typing import Callable
 from flask_login import login_required
 from flask_wtf import FlaskForm
-from server import yfox, bcrypt, db
-from server.storage.models import User, Post
-from server.storage.sessions import UserSession
-from server.view import users
-from server.view.pages import PageFlash, PageRedirect, Request, PageRequest, PageUrlFor, AbortPage, InformPage
-from server.view.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
-from server.view.image import UpdateImage
-from server.view.templates import YFoxTemplate
-from server.view.users import CurrentUser
+from blog import yfox, bcrypt, db
+from blog.storage.models import User, Post
+from blog.storage.sessions import UserSession
+from blog.view import users
+from blog.view.pages import PageFlash, PageRedirect, Request, PageRequest, PageUrlFor, AbortPage, InformPage
+from blog.view.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
+from blog.view.image import UpdateImage
+from blog.view.templates import YFoxTemplate
+from blog.view.users import CurrentUser
 
 _new_post: str = '/post/new'
 _post_id: str = '/post/<int:post_id>'

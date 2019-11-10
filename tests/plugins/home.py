@@ -1,6 +1,6 @@
 import pytest
-from server.api.requests import Get, Request
-from server.api.responses import Response
+from blog.api.requests import Get, Request
+from blog.api.responses import Response
 
 _home: str = '/home'
 

@@ -1,6 +1,6 @@
 import time
 from typing import List
-from server.api.requests import Request
+from blog.api.requests import Request
 from tests.markers import performance
 
 _xtime: int = 500

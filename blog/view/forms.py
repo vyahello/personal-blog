@@ -2,12 +2,12 @@ from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, Field, TextAreaField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
-from server.storage.models import User
-from server.view.validations import Validation, ValidationField
-from server.view.pages import InformPage
-from server.types import Inform
-from server.view.users import CurrentUser
-from server.view import users
+from blog.storage.models import User
+from blog.view.validations import Validation, ValidationField
+from blog.view.pages import InformPage
+from blog.types import Inform
+from blog.view.users import CurrentUser
+from blog.view import users
 
 
 class GenericForm(object):
