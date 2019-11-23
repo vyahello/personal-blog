@@ -1,0 +1,5 @@
+requests
+pytest
+pytest-html
+black
+flake8
