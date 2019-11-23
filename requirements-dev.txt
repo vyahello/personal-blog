@@ -1,6 +1,7 @@
 requests
-pytest
+pytest>=5.0
 pytest-html
+pytest-cov
 black
 flake8
 coveralls
