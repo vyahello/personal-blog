@@ -24,7 +24,6 @@ class UserSession(Session):
     """Represent concrete database session."""
 
     def __init__(self, db: DB) -> None:
-
         def _sync() -> SQLAlchemy:
             sync = db.synchronize()
             sync.create_all()

@@ -15,7 +15,7 @@ class UpdateImage(Update):
         self._blog = blog
         self._image = Image
         self._res: Tuple[int, int] = (125, 125)
-        self._pic_path: str = 'static/accounts'
+        self._pic_path: str = "static/accounts"
 
     def perform(self) -> str:
         data = self._form.picture.data

@@ -13,16 +13,16 @@ from blog.view import users
 class GenericForm(object):
     """Represent generic form."""
 
-    email: Field = StringField('Email', [DataRequired(), Email()])
-    password: Field = PasswordField('Password', [DataRequired()])
+    email: Field = StringField("Email", [DataRequired(), Email()])
+    password: Field = PasswordField("Password", [DataRequired()])
 
 
 class RegistrationForm(FlaskForm, GenericForm):
     """Represent registration page."""
 
-    username: Field = StringField('Username', [DataRequired(), Length(min=2, max=20)])
-    confirm_password: Field = PasswordField('Confirm Password', [DataRequired(), EqualTo('password')])
-    submit: Field = SubmitField('Sign Up')
+    username: Field = StringField("Username", [DataRequired(), Length(min=2, max=20)])
+    confirm_password: Field = PasswordField("Confirm Password", [DataRequired(), EqualTo("password")])
+    submit: Field = SubmitField("Sign Up")
     validation: Validation = ValidationField(User.query)
 
     def validate_username(self, username: User) -> None:
@@ -35,19 +35,19 @@ class RegistrationForm(FlaskForm, GenericForm):
 class LoginForm(FlaskForm, GenericForm):
     """Represent login page."""
 
-    remember: Field = BooleanField('Remember Me')
-    submit: Field = SubmitField('Login')
+    remember: Field = BooleanField("Remember Me")
+    submit: Field = SubmitField("Login")
 
 
 class UpdateAccountForm(FlaskForm, GenericForm):
     """Represent registration page."""
 
-    username: Field = StringField('Username', [DataRequired(), Length(min=2, max=20)])
-    submit: Field = SubmitField('Update')
-    picture = FileField('Updated Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
+    username: Field = StringField("Username", [DataRequired(), Length(min=2, max=20)])
+    submit: Field = SubmitField("Update")
+    picture = FileField("Updated Profile Picture", validators=[FileAllowed(["jpg", "png"])])
     validation: Validation = ValidationField(User.query)
     user: users.User = CurrentUser()
-    inform: Inform = InformPage('Your account has been updated!', 'success', 'account')
+    inform: Inform = InformPage("Your account has been updated!", "success", "account")
 
     def success(self) -> str:
         return self.inform.perform()
@@ -64,10 +64,10 @@ class UpdateAccountForm(FlaskForm, GenericForm):
 class PostForm(FlaskForm):
     """Represent post form page."""
 
-    title = StringField('Title', validators=[DataRequired()])
-    content = TextAreaField('Content', validators=[DataRequired()])
-    submit = SubmitField('Post')
-    inform: Inform = InformPage('Your post has been updated!', 'success', 'home')
+    title = StringField("Title", validators=[DataRequired()])
+    content = TextAreaField("Content", validators=[DataRequired()])
+    submit = SubmitField("Post")
+    inform: Inform = InformPage("Your post has been updated!", "success", "home")
 
     def success(self) -> str:
         return self.inform.perform()

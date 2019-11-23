@@ -2,10 +2,10 @@ import pytest
 from blog.api.requests import Get
 from blog.api.responses import Response
 
-_account: str = '/account'
+_account: str = "/account"
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope="module")
 def account_url_response(url_endpoint: str) -> Response:
     """Represent response from `account` page"""
 

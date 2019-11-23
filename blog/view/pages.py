@@ -85,7 +85,7 @@ class PageRedirect(Redirect):
 class PageRequest(Request):
     """Represent next request page."""
 
-    def __init__(self, page: str = '') -> None:
+    def __init__(self, page: str = "") -> None:
         self._page: str = page
         self._req: LocalProxy = request
 

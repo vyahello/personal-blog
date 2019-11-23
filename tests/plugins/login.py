@@ -2,17 +2,17 @@ import pytest
 from blog.api.requests import Get, Request, Post
 from blog.api.responses import Response
 
-_login: str = '/login'
+_login: str = "/login"
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope="module")
 def login_url_response(url_endpoint: str) -> Response:
     """Represent response from `login` page"""
 
     return Get(url_endpoint + _login).response()
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope="module")
 def login_user_request(url_endpoint: str) -> Request:
     """Represent ``post`` request for `login` page"""
 

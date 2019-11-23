@@ -20,4 +20,4 @@ class UserQuery(Query):
 
     def first(self, **content: Dict[str, str]) -> None:
         if self._query.filter_by(**content).first():
-            raise ValidationError('That field is taken. Please choose different one')
+            raise ValidationError("That field is taken. Please choose different one")

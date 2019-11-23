@@ -6,7 +6,7 @@ from blog.storage.sessions import UserSession
 
 
 _db: SQLAlchemy = UserSession(db).synchronize()
-_pic: str = 'default.jpg'
+_pic: str = "default.jpg"
 
 
 class User(_db.Model, UserMixin):
@@ -17,7 +17,7 @@ class User(_db.Model, UserMixin):
     email = _db.Column(_db.String(120), unique=True, nullable=False)
     image_file = _db.Column(_db.String(20), nullable=False, default=_pic)
     password = _db.Column(_db.String(60), nullable=False)
-    posts = _db.relationship('Post', backref='author', lazy=True)
+    posts = _db.relationship("Post", backref="author", lazy=True)
 
     def __repr__(self) -> str:
         return f"User('{self.username}', '{self.email}', {self.image_file})"
@@ -30,7 +30,7 @@ class Post(_db.Model):
     title = _db.Column(_db.String(1000), nullable=False)
     date_posted = _db.Column(_db.DateTime, nullable=False, default=datetime.utcnow)
     content = _db.Column(_db.Text, nullable=False)
-    user_id = _db.Column(_db.Integer, _db.ForeignKey('user.id'), nullable=False)
+    user_id = _db.Column(_db.Integer, _db.ForeignKey("user.id"), nullable=False)
 
     def __repr__(self) -> str:
         return f"Post('{self.title}', '{self.date_posted}')"

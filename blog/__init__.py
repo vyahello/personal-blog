@@ -11,7 +11,7 @@ yfox.customize()
 db: DB = SqlDB(yfox)
 bcrypt: Bcrypt = Bcrypt(yfox)
 login_mng: LoginManager = LoginManager(yfox)
-login_mng.login_view: str = 'login'
-login_mng.login_message_category: str = 'info'
+login_mng.login_view: str = "login"
+login_mng.login_message_category: str = "info"
 
 from blog import routes

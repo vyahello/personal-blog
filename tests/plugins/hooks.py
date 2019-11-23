@@ -23,21 +23,11 @@ def pytest_addoption(parser: Parser) -> None:
     """Add custom parameters."""
 
     parser.addoption(
-        "--skip-markers",
-        "-S",
-        nargs="*",
-        action="store",
-        default=None,
-        help="skip test(s) with certain marker.",
+        "--skip-markers", "-S", nargs="*", action="store", default=None, help="skip test(s) with certain marker.",
     )
 
     parser.addoption(
-        "--use-fixtures",
-        "-U",
-        nargs="*",
-        action="store",
-        default=None,
-        help="Run test that use a specific fixture",
+        "--use-fixtures", "-U", nargs="*", action="store", default=None, help="Run test that use a specific fixture",
     )
 
 

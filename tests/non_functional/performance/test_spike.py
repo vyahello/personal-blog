@@ -4,12 +4,7 @@ from blog.api.requests import Request
 from tests.markers import performance
 
 _xtime: int = 500
-_step: List[int] = [
-    200,
-    400,
-    600,
-    800
-]
+_step: List[int] = [200, 400, 600, 800]
 _zero: int = 0
 _inc: int = 1
 _sleep: int = 7

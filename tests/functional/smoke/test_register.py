@@ -22,6 +22,6 @@ def test_register_user(register_user_request: Request, success: int) -> None:
         "username": "vyah@blog.com",
         "password": "password",
         "confirm_password": "password",
-        "submit": "Sing+Up"
+        "submit": "Sing+Up",
     }
     assert register_user_request.response(data=data).status_code() == success
