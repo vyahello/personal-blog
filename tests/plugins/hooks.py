@@ -8,8 +8,8 @@ from _pytest.python import Function
 def pytest_configure(config: Config) -> None:
     """Enable verbose and output when running tests. Simulate `-v` and `-s` option in a command line."""
 
-    config.option.verbose: int = 1
-    config.option.capture: str = "yes"
+    config.option.verbose = 1
+    config.option.capture = "yes"
 
 
 def pytest_report_header(config: Config) -> List[str]:

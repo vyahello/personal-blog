@@ -1,54 +1,61 @@
 # yFox blog
-Typically a simple blog written in [_flask_](http://flask.palletsprojects.com/en/1.1.x) python micro-web framework. 
-It also supports [_docker_](https://www.docker.com) implementation to run web app locally and launch auto tests with [_pytest_](https://docs.pytest.org/en/latest) at the same time if you would like to (please see content below). 
+> Typically a simple blog written in [flask](http://flask.palletsprojects.com/en/1.1.x) python micro-web framework. 
+> It is also containerized with [docker](https://www.docker.com) to run web app locally and launch auto tests with [pytest](https://docs.pytest.org/en/latest) at the same time if you would like to. 
+>
+> You can go to direct hosting link to try it out at [https://vyahfox.pythonanywhere.com](https://vyahfox.pythonanywhere.com). Enjoy it!
 
-You can go to direct hosting link to try it on [https://vyahfox.pythonanywhere.com](https://vyahfox.pythonanywhere.com). Enjoy it!
+> **Tools**
+> - python3.6
+> - flask
+> - sqlalchemy
+> - docker
 
 ## Content
 - [Structure](#structure)
-- [Run a yFox blog](#run-a-yfox-blog)
+- [Run app blog](#run-app-blog)
   - [Using python runner](#using-python-runner)
-  - [Using official docker image](#using-official-docker-image)
+  - [Using official app docker image](#using-official-app-docker-image)
 - [Run automated tests](#run-automated-tests)
-  - [Using run-test script](#using-run-test-script)
-  - [Using official docker image](#using-official-docker-image)
+  - [Using shell script](#using-shell-script)
+  - [Using official tests docker image](#using-official-tests-docker-image)
   - [Advanced usage with pytest](#advanced-usage-with-pytest)
   - [Testing report](#testing-report)
-- [Run yFox blog and automated tests together](#run-yfox-blog-and-automated-tests-together)
-- [Contributing](#contributing)
+  - [Run app and automated tests with docker-compose](#run-app-and-automated-tests-with-docker-compose)
+- [Development](#development)
+  - [Meta](#meta)
+  - [Contributing](#contributing)
 
 ## Structure
 **Home Page**
-![Screenshot](blog/images/home.png)
+![Screenshot](images/home.png)
 **About Page**
-![Screenshot](blog/images/about.png)
+![Screenshot](images/about.png)
 **Login Page**
-![Screenshot](blog/images/login.png)
+![Screenshot](images/login.png)
 **Register Page**
-![Screenshot](blog/images/register.png)
+![Screenshot](images/register.png)
 **Account page**
-![Screenshot](blog/images/account.png)
+![Screenshot](images/account.png)
 **New Post page**
-![Screenshot](blog/images/new_post.png)
+![Screenshot](images/new_post.png)
 **Delete Post**
-![Screenshot](blog/images/delete_post.png)
+![Screenshot](images/delete_post.png)
 
-## Run a yFox blog
+## Run app blog
 ### Using python runner
 Run script from the root directory of the project:
 ```bash
 ~ python yfox.py
 ```
 
-### Using official docker image
+### Using official app docker image
 Please use `yfox-blog` docker image with particular version `vyahello/yfox-blog:<tag-version>`:
 ```bash
 ~ docker run -it --name=yfox-blog --rm -p 5000:5000 vyahello/yfox-blog:1.2.0
 ```
 
-
 ## Run automated tests
-### Using run-test script
+### Using shell script
 - To run all tests please execute `./run-tests all` from shell in the root directory of the repository.
 - To run basic smoke tests please execute `./run-tests smoke` from shell in the root directory of the repository.
 - To run performance tests please execute `./run-tests performance` from shell in the root directory of the repository.
@@ -69,7 +76,7 @@ Available actions:
 Note:		 help will be provided in case of no input parameters
 ```
 
-### Using official docker image
+### Using official tests docker image
 - Use `yfox-blog-at-tests` docker image with particular tag version `vyahello/yfox-blog-at-tests:<tag-version>`.
 - While running docker image please pass desired tests parameter you want to run after a docker image e.g `vyahello/yfox-blog-at-tests:1.0.0 performance`. Note by default all tests will be run.
 - Open `results/` directory to see `test-report.html` testing report after executed all desired tests.
@@ -84,77 +91,38 @@ Run tests with `pytest` for developing and debugging purposes only.
 
 **Run tests with particular marker**
 ```bash
-~ pytest --skip-marker performance -rs
-============================================================================== test session starts ===============================================================================
-platform darwin -- Python 3.6.5, pytest-3.5.1, py-1.5.3, pluggy-0.6.0 -- /home/.pyenv/versions/3.6.5/envs/blog/bin/python
-Project: yFox flask blog
-Written by: Volodymyr Yahello
-collected 26 items                                                                                                                                                               
-
-tests/functional/smoke/test_about.py::test_about_page_url PASSED                                                                                                           [  3%]
-tests/functional/smoke/test_about.py::test_about_page_content PASSED                                                                                                       [  7%]
-tests/functional/smoke/test_account.py::test_account_page_url PASSED                                                                                                       [ 11%]
-tests/functional/smoke/test_account.py::test_account_page_content PASSED                                                                                                   [ 15%]
-tests/functional/smoke/test_home.py::test_default_home_page_url PASSED                                                                                                     [ 19%]
-tests/functional/smoke/test_home.py::test_home_page_url PASSED                                                                                                             [ 23%]
-tests/functional/smoke/test_home.py::test_default_home_page_content PASSED                                                                                                 [ 26%]
-tests/functional/smoke/test_home.py::test_home_page_content PASSED                                                                                                         [ 30%]
-tests/functional/smoke/test_login.py::test_login_page_url PASSED                                                                                                           [ 34%]
-tests/functional/smoke/test_login.py::test_login_page_content PASSED                                                                                                       [ 38%]
-tests/functional/smoke/test_login.py::test_login_user PASSED                                                                                                               [ 42%]
-tests/functional/smoke/test_posts.py::test_new_post PASSED                                                                                                                 [ 46%]
-tests/functional/smoke/test_posts.py::test_existent_post PASSED                                                                                                            [ 50%]
-tests/functional/smoke/test_posts.py::test_non_existent_post PASSED                                                                                                        [ 53%]
-tests/functional/smoke/test_posts.py::test_update_existent_post PASSED                                                                                                     [ 57%]
-tests/functional/smoke/test_posts.py::test_update_non_existent_post PASSED                                                                                                 [ 61%]
-tests/functional/smoke/test_register.py::test_register_page_url PASSED                                                                                                     [ 65%]
-tests/functional/smoke/test_register.py::test_register_page_content PASSED                                                                                                 [ 69%]
-tests/functional/smoke/test_register.py::test_register_user PASSED                                                                                                         [ 73%]
-tests/functional/unitests/test_posts.py::test_post_date PASSED                                                                                                             [ 76%]
-tests/functional/unitests/test_posts.py::test_blog_post PASSED                                                                                                             [ 80%]
-tests/non_functional/performance/test_endurance.py::test_endurance SKIPPED                                                                                                 [ 84%]
-tests/non_functional/performance/test_load.py::test_load SKIPPED                                                                                                           [ 88%]
-tests/non_functional/performance/test_smoke.py::test_smoke SKIPPED                                                                                                         [ 92%]
-tests/non_functional/performance/test_spike.py::test_spike SKIPPED                                                                                                         [ 96%]
-tests/non_functional/performance/test_stress.py::test_stress SKIPPED                                                                                                       [100%]
-============================================================================ short test summary info =============================================================================
-SKIP [5] /home/myprojects/blog/tests/plugins/hooks.py:48: Skipping [@performance] pytest marker
+~ pytest --markers performance                                                                                                                                               
 ``` 
 
-**Run tests with particular fixture**
+**Run tests without particular marker**
 ```bash
-~ pytest --use-fixtures register_url_response
-============================================================================== test session starts ===============================================================================
-platform darwin -- Python 3.6.5, pytest-3.5.1, py-1.5.3, pluggy-0.6.0 -- /home/.pyenv/versions/3.6.5/envs/blog/bin/python
-Project: yFox flask blog
-Written by: Volodymyr Yahello
-collected 26 items / 24 deselected                                                                                                                                               
-
-tests/functional/smoke/test_register.py::test_register_page_url PASSED                                                                                                     [ 50%]
-tests/functional/smoke/test_register.py::test_register_page_content PASSED                                                                                                 [100%]
-
-==================================================================== 2 passed, 24 deselected in 0.13 seconds =====================================================================
-```
+~ pytest --skip-marker performance -rs                                                                                                                                                   
+``` 
 
 ### Testing report
 Please open `tests/results/test-report.html` file after tests execution.
 
-![Screenshot](blog/images/test-report.png)
+![Screenshot](images/test-report.png)
 
-## Run yFox blog and automated tests together
+### Run app and automated tests with docker-compose
 Please use `docker-compose.yaml` file to run blog firstly and then automated tests.
 Test results will be stored in `results/` directory in your current working directory.
 ```bash
 ~ docker-compose -p yfox up --abort-on-container-exit
 ```
 
-## Contributing
-- clone the repository
-- configure Git for the first time after cloning with your name and email
-  ```bash
-  git config --local user.name "Volodymyr Yahello"
-  git config --local user.email "vyahello@gmail.com"
-  ```
-- `python3.6` is required to run the code
-- run `pip install -r requirements-yfox.txt` to install all required yfox packages
-- run `pip install -r requirements-at-tests.txt` to install all required testing packages
+## Development
+### Meta
+Author – Volodymyr Yahello vyahello@gmail.com
+
+Distributed under the `MIT` license. See [LICENSE](LICENSE.md) for more information.
+
+You can reach out me at:
+* [https://github.com/vyahello](https://github.com/vyahello)
+* [https://www.linkedin.com/in/volodymyr-yahello-821746127](https://www.linkedin.com/in/volodymyr-yahello-821746127)
+
+### Contributing
+1. clone the repository
+2. configure Git for the first time after cloning with your `name` and `email`
+3. run `pip install -r requirements-yfox.txt` to install all required yfox packages
+4. run `pip install -r requirements-at-tests.txt` to install all required testing packages

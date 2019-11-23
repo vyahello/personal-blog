@@ -5,7 +5,7 @@ from blog import yfox, bcrypt, db
 from blog.storage.models import User, Post
 from blog.storage.sessions import UserSession
 from blog.view import users
-from blog.view.pages import PageFlash, PageRedirect, Request, PageRequest, PageUrlFor, AbortPage, InformPage
+from blog.view.pages import PageFlash, PageRedirect, PageRequest, PageUrlFor, AbortPage, InformPage
 from blog.view.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
 from blog.view.image import UpdateImage
 from blog.view.templates import YFoxTemplate
@@ -55,7 +55,7 @@ def login() -> str:
         user: User = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             CurrentUser().login(user, form)
-            next_page: Request = PageRequest('next').get()
+            next_page: str = PageRequest('next').get()
             return PageRedirect(PageUrlFor(next_page if next_page else 'home')).link()
         else:
             PageFlash('Login Unsuccessful. Please check email and password', 'danger').display()
