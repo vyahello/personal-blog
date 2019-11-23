@@ -12,7 +12,9 @@
 > - flask
 > - sqlalchemy
 > - docker
-
+>
+> In addition it is fully `type annotated` code which is covered with static code analysis tools along with `unittests`, `functional` and `performance` tests.
+ 
 ## Content
 - [Structure](#structure)
 - [Run app blog](#run-app-blog)
