@@ -7,7 +7,7 @@
 [![Build Status](https://travis-ci.org/vyahello/personal-blog.svg?branch=master)](https://travis-ci.org/vyahello/personal-blog)
 [![Coverage Status](https://coveralls.io/repos/github/vyahello/personal-blog/badge.svg?branch=master)](https://coveralls.io/github/vyahello/personal-blogbranch=master)
 
-> **Tools**
+**Tools**
 > - python3.6
 > - flask
 > - sqlalchemy
@@ -15,7 +15,7 @@
 >
 > In addition it is fully `type annotated` code which is covered with static code analysis tools along with `unittests`, `functional` and `performance` tests.
  
-## Content
+## Table of contents
 - [Structure](#structure)
 - [Run app blog](#run-app-blog)
   - [Using python runner](#using-python-runner)
@@ -66,19 +66,9 @@ Please use `yfox-blog` docker image with particular version `vyahello/yfox-blog:
 - To run performance tests please execute `./run-tests performance` from shell in the root directory of the repository.
 - To run unittests please execute `./run-tests unittest` from shell in the root directory of the repository.
 
-Please see script `help` below:
+Please see script `help` using command below:
 ```bash
 ~ ./run-tests --help
-Tool allows to simplify run of automated tests for blog project.
-
-Available actions:
- - smoke		 run automated smoke tests
- - unittest		 run automated unittest tests
- - performance		 run automated unittest tests
- - all			 run all automated tests
- - help			 display help
-
-Note:		 help will be provided in case of no input parameters
 ```
 
 ### Using official tests docker image
