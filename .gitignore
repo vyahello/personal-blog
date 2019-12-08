@@ -20,3 +20,4 @@ venv
 # ignore test results
 results/
 assets/
+.coverage
