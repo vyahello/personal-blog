@@ -7,6 +7,9 @@
 [![Build Status](https://travis-ci.org/vyahello/personal-blog.svg?branch=master)](https://travis-ci.org/vyahello/personal-blog)
 [![Coverage Status](https://coveralls.io/repos/github/vyahello/personal-blog/badge.svg?branch=master)](https://coveralls.io/github/vyahello/personal-blogbranch=master)
 
+[![EO principles respected here](https://www.elegantobjects.org/badge.svg)](https://www.elegantobjects.org)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
+
 **Tools**
 > - python3.6
 > - flask
