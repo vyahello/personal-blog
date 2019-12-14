@@ -10,6 +10,8 @@
 [![EO principles respected here](https://www.elegantobjects.org/badge.svg)](https://www.elegantobjects.org)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
 
+[![Hits-of-Code](https://hitsofcode.com/github/vyahello/personal-blog)](https://hitsofcode.com/view/github/vyahello/personal-blog)
+
 **Tools**
 > - python3.6
 > - flask
