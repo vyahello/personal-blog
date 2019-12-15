@@ -1,15 +1,17 @@
+[![Build Status](https://travis-ci.org/vyahello/personal-blog.svg?branch=master)](https://travis-ci.org/vyahello/personal-blog)
+[![Coverage Status](https://coveralls.io/repos/github/vyahello/personal-blog/badge.svg?branch=master)](https://coveralls.io/github/vyahello/personal-blogbranch=master)
+[![Forks](https://img.shields.io/github/forks/vyahello/personal-blog)](https://github.com/vyahello/personal-blog/network/members)
+[![Stars](https://img.shields.io/github/stars/vyahello/personal-blog)](https://github.com/vyahello/personal-blog/stargazers)
+
+[![EO principles respected here](https://www.elegantobjects.org/badge.svg)](https://www.elegantobjects.org)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
+[![Hits-of-Code](https://hitsofcode.com/github/vyahello/personal-blog)](https://hitsofcode.com/view/github/vyahello/personal-blog)
+
 # yFox blog
 > Typically a simple blog written in [flask](http://flask.palletsprojects.com/en/1.1.x) python micro-web framework. 
 > It is also containerized with [docker](https://www.docker.com) to run web app locally and launch auto tests with [pytest](https://docs.pytest.org/en/latest) at the same time if you would like to. 
 >
 > You can go to direct hosting link to try it out at [https://vyahfox.pythonanywhere.com](https://vyahfox.pythonanywhere.com). Enjoy it!
-
-[![Build Status](https://travis-ci.org/vyahello/personal-blog.svg?branch=master)](https://travis-ci.org/vyahello/personal-blog)
-[![Coverage Status](https://coveralls.io/repos/github/vyahello/personal-blog/badge.svg?branch=master)](https://coveralls.io/github/vyahello/personal-blogbranch=master)
-
-[![EO principles respected here](https://www.elegantobjects.org/badge.svg)](https://www.elegantobjects.org)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
-[![Hits-of-Code](https://hitsofcode.com/github/vyahello/personal-blog)](https://hitsofcode.com/view/github/vyahello/personal-blog)
 
 **Tools**
 > - python3.6
