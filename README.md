@@ -13,13 +13,13 @@
 >
 > You can go to direct hosting link to try it out at [https://vyahfox.pythonanywhere.com](https://vyahfox.pythonanywhere.com). Enjoy it!
 
-**Tools**
-> - python3.6
-> - flask
-> - sqlalchemy
-> - docker
->
-> In addition it is fully `type annotated` code which is covered with static code analysis tools along with `unittests`, `functional` and `performance` tests.
+## Tools
+- python3.6
+- flask
+- sqlalchemy
+- docker
+
+In addition it is fully `type annotated` code which is covered with static code analysis tools along with `unittests`, `functional` and `performance` tests.
  
 ## Table of contents
 - [Structure](#structure)
