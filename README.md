@@ -2,7 +2,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/vyahello/personal-blog/badge.svg?branch=master)](https://coveralls.io/github/vyahello/personal-blogbranch=master)
 [![Forks](https://img.shields.io/github/forks/vyahello/personal-blog)](https://github.com/vyahello/personal-blog/network/members)
 [![Stars](https://img.shields.io/github/stars/vyahello/personal-blog)](https://github.com/vyahello/personal-blog/stargazers)
-
 [![EO principles respected here](https://www.elegantobjects.org/badge.svg)](https://www.elegantobjects.org)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
 [![Hits-of-Code](https://hitsofcode.com/github/vyahello/personal-blog)](https://hitsofcode.com/view/github/vyahello/personal-blog)
@@ -119,7 +118,7 @@ Author – Volodymyr Yahello vyahello@gmail.com
 Distributed under the `MIT` license. See [LICENSE](LICENSE.md) for more information.
 
 You can reach out me at:
-* [https://github.com/vyahello](https://github.com/vyahello)
+* [https://twitter.com/vyahello](https://twitter.com/vyahello)
 * [https://www.linkedin.com/in/volodymyr-yahello-821746127](https://www.linkedin.com/in/volodymyr-yahello-821746127)
 
 ### Contributing
