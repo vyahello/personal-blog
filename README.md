@@ -6,17 +6,18 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
 [![Hits-of-Code](https://hitsofcode.com/github/vyahello/personal-blog)](https://hitsofcode.com/view/github/vyahello/personal-blog)
 
-# yFox blog
+# Fox blog
 > Typically a simple blog written in [flask](http://flask.palletsprojects.com/en/1.1.x) python micro-web framework. 
-> It is also containerized with [docker](https://www.docker.com) to run web app locally and launch auto tests with [pytest](https://docs.pytest.org/en/latest) at the same time if you would like to. 
 >
-> You can go to direct hosting link to try it out at [https://vyahfox.pythonanywhere.com](https://vyahfox.pythonanywhere.com). Enjoy it!
+> Please check it out here - [https://vyahfox.pythonanywhere.com](https://vyahfox.pythonanywhere.com).
 
 ## Tools
-- python3.6
+- python3.6+
 - flask
 - sqlalchemy
 - docker
+- pytest
+- TravisCI
 
 In addition it is fully `type annotated` code which is covered with static code analysis tools along with `unittests`, `functional` and `performance` tests.
  
@@ -55,13 +56,13 @@ In addition it is fully `type annotated` code which is covered with static code 
 ### Using python runner
 Run script from the root directory of the project:
 ```bash
-~ python yfox.py
+python yfox.py
 ```
 
 ### Using official app docker image
 Please use `yfox-blog` docker image with particular version `vyahello/yfox-blog:<tag-version>`:
 ```bash
-~ docker run -it --name=yfox-blog --rm -p 5000:5000 vyahello/yfox-blog:1.2.0
+docker run -it --name=yfox-blog --rm -p 5000:5000 vyahello/yfox-blog:1.2.0
 ```
 
 ## Run automated tests
@@ -73,7 +74,7 @@ Please use `yfox-blog` docker image with particular version `vyahello/yfox-blog:
 
 Please see script `help` using command below:
 ```bash
-~ ./run-tests --help
+./run-tests --help
 ```
 
 ### Using official tests docker image
@@ -91,12 +92,12 @@ Run tests with `pytest` for developing and debugging purposes only.
 
 **Run tests with particular marker**
 ```bash
-~ pytest --markers performance                                                                                                                                               
+pytest --markers performance                                                                                                                                               
 ``` 
 
 **Run tests without particular marker**
 ```bash
-~ pytest --skip-marker performance -rs                                                                                                                                                   
+pytest --skip-marker performance -rs                                                                                                                                                   
 ``` 
 
 ### Testing report
@@ -108,7 +109,7 @@ Please open `tests/results/test-report.html` file after tests execution.
 Please use `docker-compose.yaml` file to run blog firstly and then automated tests.
 Test results will be stored in `results/` directory in your current working directory.
 ```bash
-~ docker-compose -p yfox up --abort-on-container-exit
+docker-compose -p yfox up --abort-on-container-exit
 ```
 
 ## Development
