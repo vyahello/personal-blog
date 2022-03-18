@@ -1,15 +1,10 @@
-[![Build Status](https://travis-ci.org/vyahello/personal-blog.svg?branch=master)](https://travis-ci.org/vyahello/personal-blog)
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![Coverage Status](https://coveralls.io/repos/github/vyahello/personal-blog/badge.svg?branch=master)](https://coveralls.io/github/vyahello/personal-blogbranch=master)
-[![Forks](https://img.shields.io/github/forks/vyahello/personal-blog)](https://github.com/vyahello/personal-blog/network/members)
-[![Stars](https://img.shields.io/github/stars/vyahello/personal-blog)](https://github.com/vyahello/personal-blog/stargazers)
 [![EO principles respected here](https://www.elegantobjects.org/badge.svg)](https://www.elegantobjects.org)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
-[![Hits-of-Code](https://hitsofcode.com/github/vyahello/personal-blog)](https://hitsofcode.com/view/github/vyahello/personal-blog)
 
 # Fox blog
-> Typically a simple blog written in [flask](http://flask.palletsprojects.com/en/1.1.x) python micro-web framework. 
->
-> Please check it out here - [https://vyahfox.pythonanywhere.com](https://vyahfox.pythonanywhere.com).
+> Typically, a simple blog written in [flask](http://flask.palletsprojects.com/en/1.1.x) python micro-web framework.
 
 ## Tools
 - python3.6+
@@ -19,7 +14,7 @@
 - pytest
 - TravisCI
 
-In addition it is fully `type annotated` code which is covered with static code analysis tools along with `unittests`, `functional` and `performance` tests.
+In addition, it is fully `type annotated` code which is covered with static code analysis tools along with `unittests`, `functional` and `performance` tests.
  
 ## Table of contents
 - [Structure](#structure)
@@ -35,6 +30,10 @@ In addition it is fully `type annotated` code which is covered with static code 
 - [Development](#development)
   - [Meta](#meta)
   - [Contributing](#contributing)
+
+## Usage 
+
+Please check deployed test stage app via http://178.62.222.165:5006.
 
 ## Structure
 **Home Page**
@@ -113,6 +112,11 @@ docker-compose -p yfox up --abort-on-container-exit
 ```
 
 ## Development
+
+### Docker
+
+Please refer to docker image build procedure [example](https://github.com/vyahello/fast-weather-api#docker-image-build)
+
 ### Meta
 Author – Volodymyr Yahello vyahello@gmail.com
 
